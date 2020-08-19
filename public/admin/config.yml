@@ -1,0 +1,36 @@
+backend:
+  name: github
+  repo: RandomAmbersky/test-netlify-cms
+  branch: master
+
+media_folder: public/img
+public_folder: img
+collections:
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "BlogPost" # Used in the UI
+    folder: "posts" # The path to the folder where the markdown files are stored
+    create: true # Allow users to create new markdown files.
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for front matter. You will need to modify fields according to your project.
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "string"}
+      - {label: "Download", name: "download", widget: "string"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Author", name: "author", widget: "string", default: "Admin"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Home"
+        name: "home"
+        file: "content/home.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string"}
+          - { label: "Publish Date", name: "date", widget: "datetime" }
+          - { label: "Body", name: "body", widget: "markdown"}
+          - label: 'Cats'
+            name: "cats"
+            widget: list
+            fields:
+              - { label: "Name", name: "name", widget: "string"}
+              - { label: "Description", name: "description", widget: "text"}
