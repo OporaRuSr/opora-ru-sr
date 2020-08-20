@@ -1,8 +1,6 @@
 {
   "dependencies": {
     "next": "^9.5.2",
-    "postcss-flexbugs-fixes": "^4.2.1",
-    "postcss-preset-env": "^6.7.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "sass": "^1.26.10",
@@ -15,6 +13,8 @@
     "export": "yarn build && next export"
   },
   "devDependencies": {
+    "postcss-flexbugs-fixes": "^4.2.1",
+    "postcss-preset-env": "^6.7.0",
     "frontmatter-markdown-loader": "^3.6.0"
   }
 }

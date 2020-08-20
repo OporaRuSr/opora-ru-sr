@@ -1,7 +1,18 @@
-import styles from './layout.module.css'
+import React from 'react'
+import Head from 'next/head'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
-function Layout({ children }) {
-  return <div className={styles.container}>{children}</div>
+export default function Layout(props) {
+  return (
+    <main>
+      <Head>
+        <title>{props.title}</title>
+        <meta name='description' content={props.description}/>
+      </Head>
+      <Header/>
+      {props.children}
+      <Footer/>
+    </main>
+  )
 }
-
-export default Layout
