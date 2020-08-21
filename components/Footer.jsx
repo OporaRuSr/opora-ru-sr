@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Footer() {
   return (
-    <footer className="text-gray-700 body-font">
+    <footer className="oporaFooter">
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-wrap md:text-left text-center order-first">
           <div className="lg:w-1/4 md:w-1/2 w-full px-4">

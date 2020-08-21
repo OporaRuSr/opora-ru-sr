@@ -1,4 +1,16 @@
 @tailwind base;
+
+html {
+    font-family: sans-serif;
+}
+
+.oporaHeader {
+    @apply bg-blue-800 text-white
+}
+
+.oporaFooter {
+    @apply bg-blue-800 text-white
+}
+
 @tailwind components;
 @tailwind utilities;
-
