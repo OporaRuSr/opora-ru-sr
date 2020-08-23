@@ -4,8 +4,12 @@ module.exports = {
   },
   variants: {},
   plugins: [],
-  purge: [
-    './pages/**/*.js',
-    './components/**/*.js'
-  ]
+  purge: {
+    mode: 'all',
+    content: [
+      './pages/**/*.jsx',
+      './pages/**/*.js',
+      './components/**/*.jsx'
+    ]
+  }
 }
