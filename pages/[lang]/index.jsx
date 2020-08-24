@@ -7,7 +7,8 @@ export default function Index() {
   const router = useRouter();
   const { lang } = router.query;
   return (
-    lang==='sr'?
-      <Page lang={'ru'} uri={lang}/>:<Page lang={'sr'} uri={'index'}/>
+    lang === 'sr'?
+      <Page lang={'sr'} uri={'index'}/>:
+      <Page lang={'ru'} uri={lang}/>
   )
 }
