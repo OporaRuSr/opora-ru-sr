@@ -30,8 +30,8 @@ const Links = ({lang}) => {
   return Object.keys(menu).map(index=>{
     return (
       lang==='ru'?
-        <HeaderLink name={menu[index][lang]} url={'/'+index} />:
-        <HeaderLink name={menu[index][lang]} url={'/'+lang+'/'+index} />
+        <HeaderLink key={index} name={menu[index][lang]} url={'/'+index} />:
+        <HeaderLink key={index} name={menu[index][lang]} url={'/'+lang+'/'+index} />
     )
   })
 }
