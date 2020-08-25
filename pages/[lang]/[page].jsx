@@ -1,35 +1,30 @@
 import Page from '../../components/Page'
 import React from 'react'
-import { useRouter } from 'next/router'
+import {getPageLinks} from '../../api'
 
-export default function Index() {
-  const router = useRouter();
-  console.log('[page].jsx: ', router)
-  const { lang, page } = router.query;
+export default function RoutePage({lang, page}) {
+  console.log('[page].jsx: ', lang, page)
   return (
     <Page lang={lang} slug={page}/>
   )
 }
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
+  console.log('[page].jsx: getStaticPaths')
+  const pageList = await getPageLinks()
+  console.log('[page].jsx: ', pageList)
   return {
-    paths: [
-      "/sr/about",
-      "/sr/cases",
-      "/sr/news",
-      "/sr/catalog",
-      "/ru/about",
-      "/ru/cases",
-      "/ru/news",
-      "/ru/catalog"
-    ],
-    fallback: false };
+    paths: pageList,
+    fallback: false
+  }
 }
 
-export async function getStaticProps(context) {
-  console.log('[page].jsx getStaticProps:', context)
-  const {lang, page} = context.params
+export async function getStaticProps({ params }) {
+  console.log('[page].jsx: getStaticProps', params)
+  const { lang, page } = params
   return {
-    props: {lang, page}
+    props: {
+      lang, page
+    },
   }
 }

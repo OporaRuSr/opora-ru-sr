@@ -9,8 +9,32 @@ const CONTENT_DIR = '../content'
 const NEWS_DIR = '_news'
 const PAGES_DIR = '_pages'
 
+const LANG_DEFAULT = 'ru'
+
+const LANG_LIST = [
+  'ru',
+  'sr'
+]
+
+const PAGES_LIST = [
+  'news',
+  'catalog',
+  'cases',
+  'about',
+]
+
 const getUri = ({lang, type, slug}) => {
   return `${CONTENT_DIR}/${lang}/${type}/${slug}`
+}
+
+export async function getPageLinks() {
+  const ret = []
+  LANG_LIST.forEach(item=>{
+    PAGES_LIST.forEach(item2=>{
+      ret.push(`/${item}/${item2}`)
+    })
+  })
+  return ret
 }
 
 // export async function getAllPosts(lang) {
