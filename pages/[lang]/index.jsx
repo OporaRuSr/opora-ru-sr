@@ -3,12 +3,14 @@ import React from 'react'
 
 import { useRouter } from 'next/router'
 
-export default function Index() {
+const Lang = () => {
   const router = useRouter();
   const { lang } = router.query;
   return (
     lang === 'sr'?
-      <Page lang={'sr'} uri={'index'}/>:
-      <Page lang={'ru'} uri={lang}/>
+      <Page lang={'sr'} slug={'index'}/>:
+      <Page lang={'ru'} slug={lang}/>
   )
 }
+
+export default Lang

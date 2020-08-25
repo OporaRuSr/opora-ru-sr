@@ -28,7 +28,9 @@ const getUri = ({lang, type, slug}) => {
 //   return posts;
 // }
 
-export async function getPage({lang, slug}) {
+export async function getPage(props) {
+  const {lang, slug} = props
+  console.log('getPage ', lang, slug)
   const uri = getUri({
     lang,
     type: PAGES_DIR,

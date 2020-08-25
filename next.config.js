@@ -3,9 +3,11 @@
 //   { dev, dir, outDir, distDir, buildId }
 // ) => {
 //   return {
-//     '/index.html': { page: '/' },
-//     '/sr.html': { page: '/sr' },
-//     '/about.html': { page: '/about' },
+//     '/': { page: '/'},
+//     '/sr/news': { page: '/index'},
+//     '/cases': { page: '/' },
+//     '/about': { page: '/' },
+//     '/catalog': { page: '/' },
 //   }
 // }
 
