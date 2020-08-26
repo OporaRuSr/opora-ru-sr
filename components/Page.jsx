@@ -1,14 +1,10 @@
 import Layout from './Layout'
-import { getPage } from '../api'
 
-const Page = (props) => {
-  console.log('Page: ', props)
-  const {lang, slug} = props
-  const page = getPage({lang, slug})
+const Page = ({lang, payload}) => {
   return (
-      <Layout lang={lang} title={'My Home nlog'}>
+      <Layout lang={lang} title={payload.title}>
         <h1>{lang}</h1>
-        <h1>{slug}</h1>
+        {payload.content}
         {/*<Post title={page.title} content={page.content}/>*/}
        </Layout>
   )

@@ -17,9 +17,13 @@ module.exports = {
     cfg.module.rules.push(
       {
         test: /\.md$/,
-        loader: 'frontmatter-markdown-loader',
-        options: { mode: ['react-component'] }
-      }
+        use: 'raw-loader'
+      },
+      // {
+      //   test: /\.md$/,
+      //   loader: 'frontmatter-markdown-loader',
+      //   options: { mode: ['react-component'] }
+      // }
     )
     return cfg;
   }

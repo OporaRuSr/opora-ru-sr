@@ -1,11 +1,11 @@
 import Page from '../../components/Page'
 import React from 'react'
-import {getPageLinks} from '../../api'
+import { getPage, getPageLinks } from '../../api'
 
-export default function RoutePage({lang, page}) {
-  console.log('[page].jsx: ', lang, page)
+export default function RoutePage({lang, payload}) {
+  console.log('[page].jsx: RoutePage ', lang, payload)
   return (
-    <Page lang={lang} slug={page}/>
+    <Page lang={lang} payload={payload}/>
   )
 }
 
@@ -22,9 +22,10 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   console.log('[page].jsx: getStaticProps', params)
   const { lang, page } = params
+  const payload = await getPage({lang, slug: page})
   return {
     props: {
-      lang, page
+      lang, payload
     },
   }
 }

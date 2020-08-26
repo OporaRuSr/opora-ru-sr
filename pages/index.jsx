@@ -9,7 +9,7 @@ import Page from '../components/Page'
 
 export default function Index() {
   return (
-    <Page lang={'ru'} slug={'index'} />
+    <Page lang={'ru'} payload={'index'} />
   )
   // const page = getPage({lang:'ru', slug:'about'})
   // return (
