@@ -17,6 +17,7 @@ const LANG_LIST = [
 ]
 
 const PAGES_LIST = [
+  'index',
   'news',
   'catalog',
   'cases',

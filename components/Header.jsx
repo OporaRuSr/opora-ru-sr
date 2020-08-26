@@ -29,8 +29,6 @@ const HeaderLink = ({name, url}) => {
 const Links = ({lang}) => {
   return Object.keys(menu).map(index=>{
     return (
-      lang==='ru'?
-        <HeaderLink key={index} name={menu[index][lang]} url={'/'+index} />:
         <HeaderLink key={index} name={menu[index][lang]} url={'/'+lang+'/'+index} />
     )
   })
@@ -45,9 +43,9 @@ export default function Header({lang}) {
       <div className="float-right">
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
           <Links lang={lang} />
-          <Link href="/"><a className="mr-5 hover:text-gray-900">RU</a></Link>
+          <Link href="/ru"><a className="mr-5 hover:text-gray-900">RU</a></Link>
           <a className="mr-5 hover:text-gray-900">/</a>
-          <Link href="/sr/"><a className="mr-5 hover:text-gray-900">SR</a></Link>
+          <Link href="/sr"><a className="mr-5 hover:text-gray-900">SR</a></Link>
         </nav>
       </div>
     </header>
