@@ -2,10 +2,10 @@ import Page from '../../components/Page'
 import React from 'react'
 import { getPage, getPageLinks } from '../../api'
 
-export default function RoutePage({lang, payload}) {
-  console.log('[page].jsx: RoutePage ', lang, payload)
+export default function RoutePage(props) {
+  console.log('[page].jsx: RoutePage ', props)
   return (
-    <Page lang={lang} payload={payload}/>
+    <Page {...props}/>
   )
 }
 
