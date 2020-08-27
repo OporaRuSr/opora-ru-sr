@@ -3,8 +3,8 @@ import matter from 'gray-matter'
 import marked from 'marked'
 import React from 'react'
 import fs from 'fs'
-// const path = require('path');
-import MockNews from '../mocks/MockNews'
+
+import Page from '../components/Page'
 
 const CONTENT_DIR = process.cwd()+'/content'
 const NEWS_DIR = 'news'
@@ -25,14 +25,36 @@ const PAGES_LIST = [
   'about',
 ]
 
+const PAGES_TYPES = {
+  'index': {
+    component: Page
+  },
+  'news': {
+    component: Page
+  },
+  'catalog': {
+    component: Page
+  },
+  'cases': {
+    component: Page
+  },
+  'about': {
+    component: Page
+  },
+}
+
 const getUri = ({lang, type, slug}) => {
   return `${CONTENT_DIR}/${lang}/${type}/${slug}`
+}
+
+export function getComponent(name) {
+  return PAGES_TYPES[name].component
 }
 
 export async function getPageLinks() {
   const ret = []
   LANG_LIST.forEach(item=>{
-    PAGES_LIST.forEach(item2=>{
+    Object.keys(PAGES_TYPES).forEach(item2=>{
       ret.push(`/${item}/${item2}`)
     })
   })
