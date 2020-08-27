@@ -27,19 +27,19 @@ const PAGES_LIST = [
 
 const PAGES_TYPES = {
   'index': {
-    component: Page
+    type: 'page'
   },
   'news': {
-    component: Page
+    type: 'blog'
   },
   'catalog': {
-    component: Page
+    type: 'blog'
   },
   'cases': {
-    component: Page
+    type: 'blog'
   },
   'about': {
-    component: Page
+    type: 'page'
   },
 }
 
@@ -47,8 +47,8 @@ const getUri = ({lang, type, slug}) => {
   return `${CONTENT_DIR}/${lang}/${type}/${slug}`
 }
 
-export function getComponent(name) {
-  return PAGES_TYPES[name].component
+export function getPageType(name) {
+  return PAGES_TYPES[name].type
 }
 
 export async function getPageLinks() {
