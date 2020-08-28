@@ -10,6 +10,7 @@ export default function Layout(props) {
       <Head>
         <title>{props.title}</title>
         <meta name='description' content={props.description}/>
+        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"/>
       </Head>
       <Header lang={lang}/>
       {props.children}
