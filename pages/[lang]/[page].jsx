@@ -2,15 +2,16 @@ import Page from '../../components/Page'
 import Blog from '../../components/Blog'
 
 import React from 'react'
-import { getPage, getPageType, getPageLinks } from '../../api'
+import { getPayload, getPageType, getPageLinks } from '../../api'
+import {PAGE_TYPE} from '../../api/constant'
 
 export default function RoutePage(props) {
   console.log('[page].jsx: RoutePage ', props)
   switch (props.pageType) {
-    case 'page': return (
+    case PAGE_TYPE.PAGE: return (
       <Page {...props}/>
     )
-    case 'blog': return (
+    case PAGE_TYPE.BLOG: return (
       <Blog {...props}/>
     )
   }
@@ -29,8 +30,12 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   console.log('[page].jsx: getStaticProps', params)
   const { lang, page } = params
-  const payload = await getPage({lang, slug: page})
   const pageType = getPageType(params.page)
+  const payload = await getPayload({
+    type: pageType,
+    lang,
+    slug: page
+  })
   return {
     props: {
       lang, payload, pageType

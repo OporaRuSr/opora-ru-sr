@@ -4,44 +4,9 @@ import marked from 'marked'
 import React from 'react'
 import fs from 'fs'
 
-import Page from '../components/Page'
+import {PAGES_DIR, PAGE_TYPE, PAGES_TYPES, LANG_LIST} from './constant'
 
 const CONTENT_DIR = process.cwd()+'/content'
-const NEWS_DIR = 'news'
-const PAGES_DIR = 'pages'
-
-const LANG_DEFAULT = 'ru'
-
-const LANG_LIST = [
-  'ru',
-  'sr'
-]
-
-const PAGES_LIST = [
-  'index',
-  'news',
-  'catalog',
-  'cases',
-  'about',
-]
-
-const PAGES_TYPES = {
-  'index': {
-    type: 'page'
-  },
-  'news': {
-    type: 'blog'
-  },
-  'catalog': {
-    type: 'blog'
-  },
-  'cases': {
-    type: 'blog'
-  },
-  'about': {
-    type: 'page'
-  },
-}
 
 const getUri = ({lang, type, slug}) => {
   return `${CONTENT_DIR}/${lang}/${type}/${slug}`
@@ -92,5 +57,16 @@ export async function getPage(props) {
   return {
     title: uri,
     content: content
+  }
+}
+
+export async function getPayload({type, lang, slug}) {
+  switch (type) {
+    case PAGE_TYPE.PAGE:
+      return getPage({lang, slug})
+    case PAGE_TYPE.BLOG:
+      return {}
+    default:
+      return {}
   }
 }
