@@ -43,12 +43,26 @@ export async function getPageLinks() {
 
 export async function getBlog(props) {
   const {lang, slug} = props
+  let payload = []
   console.log('getBlog ', lang, slug)
   const uri = `${CONTENT_DIR}/${lang}/${slug}`
   console.log('getBlog uri', uri)
+  const dir = fs.readdirSync(uri)
+  dir.map( item => {
+    const fileContent = fs.readFileSync(`${uri}/${item}`).toString();
+    const meta = matter(fileContent)
+    const pageUri = String(`/${lang}/${slug}/${item}`).replace('.md','')
+    console.log('getBlog item', item, meta)
+    payload.push({
+      title: meta.data.title,
+      url: pageUri
+    })
+  })
+  console.log('getBlog payload', payload)
   return {
     title: uri,
-    content: uri
+    content: uri,
+    payload
   }
 }
 
