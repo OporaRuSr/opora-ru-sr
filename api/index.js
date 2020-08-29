@@ -4,7 +4,7 @@ import marked from 'marked'
 import React from 'react'
 import fs from 'fs'
 
-import {PAGES_DIR, PAGE_TYPE, PAGES_TYPES, LANG_LIST} from './constant'
+import {PAGE_TYPE, PAGES_TYPES, LANG_LIST} from './constant'
 
 const CONTENT_DIR = process.cwd()+'/content'
 
@@ -41,15 +41,21 @@ export async function getPageLinks() {
 //   return posts;
 // }
 
+export async function getBlog(props) {
+  const {lang, slug} = props
+  console.log('getBlog ', lang, slug)
+  const uri = `${CONTENT_DIR}/${lang}/${slug}`
+  console.log('getBlog uri', uri)
+  return {
+    title: uri,
+    content: uri
+  }
+}
+
 export async function getPage(props) {
   const {lang, slug} = props
   console.log('getPage ', lang, slug)
-  console.log(process.cwd());
-  const uri = getUri({
-    lang,
-    type: PAGES_DIR,
-    slug
-  })+'.md'
+  const uri = `${CONTENT_DIR}/${lang}/pages/${slug}.md`
   console.log('getPage ', uri)
   const fileContent = fs.readFileSync(uri).toString();
   const meta = matter(fileContent)
@@ -65,7 +71,7 @@ export async function getPayload({type, lang, slug}) {
     case PAGE_TYPE.PAGE:
       return getPage({lang, slug})
     case PAGE_TYPE.BLOG:
-      return {}
+      return getBlog({lang, slug})
     default:
       return {}
   }

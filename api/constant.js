@@ -1,19 +1,8 @@
-export const NEWS_DIR = 'news'
-export const PAGES_DIR = 'pages'
-
 export const LANG_DEFAULT = 'ru'
 
 export const LANG_LIST = [
   'ru',
   'sr'
-]
-
-export const PAGES_LIST = [
-  'index',
-  'news',
-  'catalog',
-  'cases',
-  'about',
 ]
 
 export const PAGE_TYPE = {
