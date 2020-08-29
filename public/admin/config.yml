@@ -6,7 +6,7 @@ public_folder: img #I dont know
 collections:
   - name: "news_ru" # Used in routes, e.g., /admin/collections/blog
     label: "Новости (RU)" # Used in the UI
-    folder: "content/posts/ru" # The path to the folder where the markdown files are stored
+    folder: "content/ru/news" # The path to the folder where the markdown files are stored
     create: true # Allow users to create new markdown files.
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for front matter. You will need to modify fields according to your project.
@@ -15,7 +15,7 @@ collections:
       - {label: "Текст", name: "body", widget: "markdown"}
   - name: "news_sr" # Used in routes, e.g., /admin/collections/blog
     label: "Новости (SR)" # Used in the UI
-    folder: "content/posts/sr" # The path to the folder where the markdown files are stored
+    folder: "content/sr/news" # The path to the folder where the markdown files are stored
     create: true # Allow users to create new markdown files.
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for front matter. You will need to modify fields according to your project.
@@ -24,7 +24,7 @@ collections:
       - {label: "Текст", name: "body", widget: "markdown"}
   - name: "cases_ru" # Used in routes, e.g., /admin/collections/blog
     label: "Кейсы (RU)" # Used in the UI
-    folder: "content/cases/ru" # The path to the folder where the markdown files are stored
+    folder: "content/ru/cases" # The path to the folder where the markdown files are stored
     create: true # Allow users to create new markdown files.
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for front matter. You will need to modify fields according to your project.
@@ -33,7 +33,7 @@ collections:
       - {label: "Текст", name: "body", widget: "markdown"}
   - name: "cases_sr" # Used in routes, e.g., /admin/collections/blog
     label: "Кейсы (SR)" # Used in the UI
-    folder: "content/cases/sr" # The path to the folder where the markdown files are stored
+    folder: "content/sr/cases" # The path to the folder where the markdown files are stored
     create: true # Allow users to create new markdown files.
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for front matter. You will need to modify fields according to your project.
