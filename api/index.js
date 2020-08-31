@@ -4,7 +4,7 @@ import marked from 'marked'
 import React from 'react'
 import fs from 'fs'
 
-import {PAGE_TYPE, PAGES_TYPES, LANG_LIST} from './constant'
+import {PAGE_TYPE, PAGES_TYPES, LANG_LIST} from './constants'
 
 const CONTENT_DIR = process.cwd()+'/content'
 
@@ -61,8 +61,7 @@ export async function getBlog(props) {
   console.log('getBlog payload', links)
   return {
     title: uri,
-    content: uri,
-    payload: links
+    links
   }
 }
 
