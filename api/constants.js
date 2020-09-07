@@ -7,6 +7,7 @@ export const LANG_LIST = [
 
 export const PAGE_TYPE = {
   BLOG: 'blog',
+  BLOG_PAGE: 'blog_page',
   PAGE: 'page'
 }
 

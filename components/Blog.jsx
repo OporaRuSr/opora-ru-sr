@@ -2,7 +2,7 @@ import Layout from './Layout'
 import Link from 'next/link'
 
 const Blog = ({lang, payload}) => {
-  console.log('Blog payload: ', payload)
+  // console.log('Blog payload: ', payload)
   return (
       <Layout lang={lang} title={payload.title}>
         <h1>ЭТО БЛОГ</h1>
