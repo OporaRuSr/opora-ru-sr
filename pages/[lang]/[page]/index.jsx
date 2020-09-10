@@ -1,10 +1,10 @@
-import Page from '../../components/Page'
-import Blog from '../../components/Blog'
-import BlogPage from '../../components/BlogPage'
+import Page from '../../../components/Page'
+import Blog from '../../../components/Blog'
+import BlogPage from '../../../components/BlogPage'
 
 import React from 'react'
-import { getPayload, getPageType, getPageLinks, getBlogPageLinks } from '../../api'
-import {PAGE_TYPE} from '../../api/constants'
+import { getPayload, getPageType, getPageLinks, getBlogPageLinks } from '../../../api'
+import {PAGE_TYPE} from '../../../api/constants'
 
 export default function RoutePage(props) {
   console.log('[page].jsx: RoutePage ', props)
