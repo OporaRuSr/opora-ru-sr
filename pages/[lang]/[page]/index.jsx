@@ -4,9 +4,18 @@ import BlogPage from '../../../components/BlogPage'
 
 import React from 'react'
 import { getPayload, getPageType, getPageLinks, getBlogPageLinks } from '../../../api'
+
 import {PAGE_TYPE} from '../../../api/constants'
 
-export default function RoutePage(props) {
+/**
+ * @param lang
+ * @param payload
+ * @param pageType
+ * @returns {JSX}
+ * @constructor
+ */
+export default function RoutePage({lang, payload, pageType}) {
+  const props = {pageType, lang, payload}
   console.log('[page].jsx: RoutePage ', props)
   switch (props.pageType) {
     case PAGE_TYPE.PAGE: return (
@@ -24,9 +33,11 @@ export default function RoutePage(props) {
 export async function getStaticPaths() {
   // console.log('[page].jsx: getStaticPaths')
   const pageList = await getPageLinks()
-  console.log('[page].jsx pageList: ', pageList)
-  const blogList = await getBlogPageLinks()
+  // console.log('[page].jsx pageList: ', pageList)
+  // const blogList = await getBlogPageLinks()
   // console.log('[page].jsx: ', pageList)
+  // const paths = pageList.concat(blogList)
+  // console.log(paths)
   return {
     paths: pageList,
     fallback: false

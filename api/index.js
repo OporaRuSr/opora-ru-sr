@@ -4,13 +4,9 @@ import marked from 'marked'
 import React from 'react'
 import fs from 'fs'
 
-import {PAGE_TYPE, PAGES_TYPES, LANG_LIST} from './constants'
-
 const CONTENT_DIR = process.cwd()+'/content'
 
-// const getUri = ({lang, type, slug}) => {
-//   return `${CONTENT_DIR}/${lang}/${type}/${slug}`
-// }
+import {PAGE_TYPE, PAGES_TYPES, LANG_LIST} from './constants'
 
 export function getPageType(name) {
   return PAGES_TYPES[name].type
@@ -43,21 +39,6 @@ export async function getBlogPage(slug) {
     content: content
   }
 }
-
-// export async function getAllPosts(lang) {
-//   const context = require.context(`${NEWS_DIR}/${lang}`, false, /\.md$/)
-//   const posts = []
-//   for(const key of context.keys()){
-//     const post = key.slice(2);
-//     const content = await import(`${NEWS_DIR}/${lang}/${post}`);
-//     const meta = matter(content.default)
-//     posts.push({
-//       slug: post.replace('.md',''),
-//       title: meta.data.title
-//     })
-//   }
-//   return posts;
-// }
 
 export async function getBlog(props) {
   const {lang, slug} = props

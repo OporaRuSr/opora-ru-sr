@@ -1,7 +1,8 @@
-export default function MarkdownPage(props) {
+import React from 'react'
+import BlogPage from '../../../components/BlogPage'
+
+export default function page(props) {
   return (
-    <div>
-      <h1>MarkDown Page</h1>
-    </div>
-  )
+      <BlogPage {...props}/>
+    )
 }
