@@ -16,7 +16,7 @@ import {PAGE_TYPE} from '../../../api/constants'
  */
 export default function RoutePage({lang, payload, pageType}) {
   const props = {pageType, lang, payload}
-  console.log('[page].jsx: RoutePage ', props)
+  // console.log('[page].jsx: RoutePage ', props)
   switch (props.pageType) {
     case PAGE_TYPE.PAGE: return (
       <Page {...props}/>
@@ -56,6 +56,6 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       lang, payload, pageType
-    },
+    }
   }
 }
