@@ -3,7 +3,7 @@ import Blog from '../../../components/Blog'
 import BlogPage from '../../../components/BlogPage'
 
 import React from 'react'
-import { getPayload, getPageType, getPageLinks, getBlogPageLinks } from '../../../api'
+import { getPayload, getPageType, getPageLinks } from '../../../api'
 
 import {PAGE_TYPE} from '../../../api/constants'
 

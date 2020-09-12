@@ -22,7 +22,12 @@ export async function getPageLinks() {
   return ret
 }
 
-export async function getBlogPageLinks() {
+export async function getAllBlogPageLinks() {
+  // const pageLinks = await getAllBlogs()
+  // const pages = []
+  // pageLinks.forEach(item => {
+  //   console.log(item)
+  // })
   return [
     '/ru/news/2020-08-29-ffds',
     '/ru/news/2020-08-29-дом'
