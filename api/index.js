@@ -53,6 +53,9 @@ export async function getBlog(props) {
   // console.log('getBlog uri', uri)
   const dir = fs.readdirSync(uri)
   dir.map( item => {
+    if (!item.endsWith('.md')) {
+      return
+    }
     const fileContent = fs.readFileSync(`${uri}/${item}`).toString();
     const meta = matter(fileContent)
     const pageUri = String(`/${lang}/${slug}/${item}`).replace('.md','')
