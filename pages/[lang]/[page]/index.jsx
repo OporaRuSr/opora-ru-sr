@@ -33,7 +33,7 @@ export default function RoutePage({lang, payload, pageType}) {
 export async function getStaticPaths() {
   // console.log('[page].jsx: getStaticPaths')
   const pageList = await getPageLinks()
-  // console.log('[page].jsx pageList: ', pageList)
+  console.log('[page].jsx pageList: ', pageList)
   // const blogList = await getBlogPageLinks()
   // console.log('[page].jsx: ', pageList)
   // const paths = pageList.concat(blogList)

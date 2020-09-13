@@ -1,16 +1,14 @@
 import React from 'react'
-import Link from 'next/link'
 import Layout from './Layout'
 
-export default function BlogPage(props) {
-  console.log('BlogPage props: ', props)
+export default function BlogPage({lang, payload}) {
+  console.log('BlogPage props: ', lang, payload)
   return (
-    <h1>BlogPage</h1>
-    // <Layout lang={lang} title={payload.title}>
-    //   <h1>Страничка блога</h1>
-    //   <div>
-    //     <h2>{payload.title}</h2>
-    //   </div>
-    // </Layout>
+    <Layout lang={lang} title={payload.title}>
+      <h1>{lang}</h1>
+      <h1>Страничка блога</h1>
+      <h2>{payload.title}</h2>
+      {payload.content}
+    </Layout>
   )
 }

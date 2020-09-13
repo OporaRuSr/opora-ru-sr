@@ -34,8 +34,8 @@ export async function getAllBlogPageLinks() {
   ]
 }
 
-export async function getBlogPage(slug) {
-  const uri = `${CONTENT_DIR}/${slug}.md`
+export async function getBlogPage({lang,slug}) {
+  const uri = `${CONTENT_DIR}/${lang}/${slug}.md`
   const fileContent = fs.readFileSync(uri).toString();
   const meta = matter(fileContent)
   const content = marked(meta.content)
@@ -92,6 +92,8 @@ export async function getPayload({type, lang, slug}) {
       return getPage({lang, slug})
     case PAGE_TYPE.BLOG:
       return getBlog({lang, slug})
+    case PAGE_TYPE.BLOG_PAGE:
+      return getBlogPage({lang, slug})
     default:
       return {}
   }
