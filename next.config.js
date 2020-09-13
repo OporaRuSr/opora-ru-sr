@@ -1,14 +1,14 @@
-const exportPathMap = async (
-  defaultPathMap,
-  { dev, dir, outDir, distDir, buildId }
-) => {
-  return {
-    '/': { page: '/' },
-  }
-}
+// const exportPathMap = async (
+//   defaultPathMap,
+//   { dev, dir, outDir, distDir, buildId }
+// ) => {
+//   return {
+//     '/': { page: '/' },
+//   }
+// }
 
 module.exports = {
-  exportPathMap,
+  // exportPathMap,
   webpack: (cfg, { isServer }) => {
     cfg.module.rules.push(
       {
