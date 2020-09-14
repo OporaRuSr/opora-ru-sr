@@ -30,7 +30,7 @@ export async function getAllBlogPageLinks() {
   // })
   return [
     '/ru/news/2020-08-29-ffds',
-    '/ru/news/2020-08-29-дом'
+    '/ru/news/2020-08-29-dom'
   ]
 }
 
@@ -38,10 +38,10 @@ export async function getBlogPage({lang,slug}) {
   const uri = `${CONTENT_DIR}/${lang}/${slug}.md`
   const fileContent = fs.readFileSync(uri).toString();
   const meta = matter(fileContent)
-  const content = marked(meta.content)
+  console.log('getBlogPage', meta)
   return {
-    title: uri,
-    content: content
+    title: meta.data.title,
+    content: meta.content
   }
 }
 

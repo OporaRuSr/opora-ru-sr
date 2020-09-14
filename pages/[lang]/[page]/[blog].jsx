@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  console.log('[blog].jsx: getStaticProps', params)
+  // console.log('[blog].jsx: getStaticProps', params)
   const { lang, page, blog } = params
   const slug = `${page}/${blog}`
   const payload = await getBlogPage({lang, slug})
