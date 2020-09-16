@@ -3,8 +3,9 @@ import matter from 'gray-matter'
 import marked from 'marked'
 import React from 'react'
 import fs from 'fs'
+import path from 'path'
 
-const CONTENT_DIR = process.cwd()+'/content'
+const CONTENT_DIR = path.join(process.cwd(), 'content')
 
 import {PAGE_TYPE, PAGES_TYPES, LANG_LIST} from './constants'
 
@@ -12,33 +13,45 @@ export function getPageType(name) {
   return PAGES_TYPES[name].type
 }
 
-export async function getPageLinks() {
+export async function getPageLinks(sortType=null) {
   const ret = []
   LANG_LIST.forEach( item => {
     Object.keys(PAGES_TYPES).forEach(item2=>{
-      ret.push(`/${item}/${item2}`)
+      if (!sortType) {
+        ret.push(`/${item}/${item2}`)
+        return
+      }
+      if (PAGES_TYPES[item2].type === sortType) {
+        ret.push(`/${item}/${item2}`)
+      }
     })
   })
   return ret
 }
 
 export async function getAllBlogPageLinks() {
-  // const pageLinks = await getAllBlogs()
-  // const pages = []
-  // pageLinks.forEach(item => {
-  //   console.log(item)
-  // })
-  return [
-    '/ru/news/2020-08-29-ffds',
-    '/ru/news/2020-08-29-dom'
-  ]
+  const result = []
+  const links = await getPageLinks(PAGE_TYPE.BLOG)
+  // console.log(links)
+  links.forEach(blogDir => {
+    const uri = path.join(CONTENT_DIR, blogDir)
+    const dir = fs.readdirSync(uri)
+    dir.forEach( fileName => {
+      if (fileName.endsWith('.md')) {
+        const filePath = path.join(blogDir, fileName).replace('.md','')
+        result.push(filePath)
+      }
+    })
+  })
+  // console.log(result)
+  return result
 }
 
 export async function getBlogPage({lang,slug}) {
   const uri = `${CONTENT_DIR}/${lang}/${slug}.md`
   const fileContent = fs.readFileSync(uri).toString();
   const meta = matter(fileContent)
-  console.log('getBlogPage', meta)
+  // console.log('getBlogPage', meta)
   return {
     title: meta.data.title,
     content: meta.content
