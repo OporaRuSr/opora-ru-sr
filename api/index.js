@@ -75,6 +75,8 @@ export async function getBlog(props) {
     // console.log('getBlog item', item, meta)
     links.push({
       title: meta.data.title,
+      description: meta.data.description,
+      newsimage: meta.data.newsimage,
       url: pageUri
     })
   })

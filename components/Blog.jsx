@@ -15,8 +15,12 @@ const Blog = ({lang, payload}) => {
               return (
                 <li key={id}>
                   <Link href={post.url}>
-                    <a>{post.title}</a>
+                    <a>{post.title}
+                      <div><img src={post.newsimage} /></div>
+                    </a>
                   </Link>
+
+                  <div>{post.description}</div>
                 </li>
               )
             })}
