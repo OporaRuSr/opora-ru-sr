@@ -94,10 +94,10 @@ export async function getPage(props) {
   // console.log('getPage ', uri)
   const fileContent = fs.readFileSync(uri).toString();
   const meta = matter(fileContent)
-  const content = marked(meta.content)
+  console.log(meta)
   return {
-    title: uri,
-    content: content
+    title: meta.data.title,
+    content: meta.content
   }
 }
 
