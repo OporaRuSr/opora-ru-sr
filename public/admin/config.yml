@@ -44,3 +44,13 @@ collections:
       - {label: "Краткое описание", name: "description", widget: "string"}
       - {label: "Заглавная картинка", name: "newsimage", widget: "image" }
       - {label: "Текст", name: "body", widget: "markdown"}
+  - name: "catalog_ru" # Used in routes, e.g., /admin/collections/blog
+    label: "Каталог компаний (RU)" # Used in the UI
+    folder: "content/ru/catalog" # The path to the folder where the markdown files are stored
+    create: true # Allow users to create new markdown files.
+    slug: "{{year}}-{{month}}-{{day}}-{{hour}}-{{minute}}-{{second}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for front matter. You will need to modify fields according to your project.
+      - {label: "Заголовок", name: "title", widget: "string"}
+      - {label: "Краткое описание", name: "description", widget: "string"}
+      - {label: "Заглавная картинка", name: "newsimage", widget: "image" }
+      - {label: "Текст", name: "body", widget: "markdown"}
