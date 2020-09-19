@@ -31,22 +31,25 @@ export const PAGES_TYPES = {
   },
 }
 
-export const PAGE_HEADERS = {
-  'ru': {
-    'news': {
-      header: 'Новости'
-    },
-    'catalog': {
-      header: 'Каталог'
-    },
-    'cases': {
-      header: 'Кейсы компаний'
-    },
-    'about': {
-      header: 'О нас'
-    },  
+export const i18n = {
+  'index': {
+    ru: 'Опора России. Сербский филиал',
+    sr: 'Опора России. Сербский филиал'
   },
-  'sr': {
-
-  }
+  'news': {
+    ru: 'Новости',
+    sr: 'Вести'
+  },
+  'cases': {
+    ru: 'Кейсы',
+    sr: 'Случајеви'
+  },
+  'about': {
+    ru: 'О нас',
+    sr: 'О нама'
+  },
+  'catalog': {
+    ru: 'Каталог',
+    sr: 'Каталог'
+  },
 }
