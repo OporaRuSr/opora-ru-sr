@@ -30,3 +30,23 @@ export const PAGES_TYPES = {
     type: PAGE_TYPE.PAGE
   },
 }
+
+export const PAGE_HEADERS = {
+  'ru': {
+    'news': {
+      header: 'Новости'
+    },
+    'catalog': {
+      header: 'Каталог'
+    },
+    'cases': {
+      header: 'Кейсы компаний'
+    },
+    'about': {
+      header: 'О нас'
+    },  
+  },
+  'sr': {
+
+  }
+}
