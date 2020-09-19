@@ -1,4 +1,7 @@
 {
+  "license": "MIT",
+  "version": "0.0.1",
+  "private": true,
   "dependencies": {
     "gray-matter": "^4.0.2",
     "marked": "^1.1.1",
