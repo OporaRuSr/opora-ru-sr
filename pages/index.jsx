@@ -3,7 +3,6 @@ import Page from '../components/Page'
 import { getPage } from '../api'
 
 export default function Index({payload}) {
-
   useEffect(()=>{
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", user => {
@@ -15,20 +14,9 @@ export default function Index({payload}) {
       });
     }
   },[])
-
   return (
     <Page lang={'ru'} payload={payload}/>
   )
-}
-
-export async function getStaticPaths() {
-  const paths = [
-    '/',
-  ]
-  return {
-    paths,
-    fallback: false
-  }
 }
 
 export async function getStaticProps({ params }) {
