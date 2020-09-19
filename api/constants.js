@@ -31,11 +31,7 @@ export const PAGES_TYPES = {
   },
 }
 
-export const i18n = {
-  'index': {
-    ru: 'Опора России. Сербский филиал',
-    sr: 'Опора России. Сербский филиал'
-  },
+export const PAGE_HEADERS = {
   'news': {
     ru: 'Новости',
     sr: 'Вести'
@@ -51,5 +47,5 @@ export const i18n = {
   'catalog': {
     ru: 'Каталог',
     sr: 'Каталог'
-  },
+  }
 }
