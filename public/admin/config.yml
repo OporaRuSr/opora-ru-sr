@@ -4,6 +4,20 @@ backend:
 media_folder: public/img #images that are uploaded via Netlify Cms interface will be stored in this folder
 public_folder: img #I dont know
 collections:
+  - name: "pages_ru"
+    label: "Странички (RU)"
+    folder: "content/ru/pages" # The path to the folder where the markdown files are stored
+    create: false # Allow users to create new markdown files.
+    fields: # The fields for front matter. You will need to modify fields according to your project.
+      - {label: "Заголовок", name: "title", widget: "string"}
+      - {label: "Текст", name: "body", widget: "markdown"}
+  - name: "pages_sr"
+    label: "Странички (SR)"
+    folder: "content/sr/pages" # The path to the folder where the markdown files are stored
+    create: false # Allow users to create new markdown files.
+    fields: # The fields for front matter. You will need to modify fields according to your project.
+      - {label: "Заголовок", name: "title", widget: "string"}
+      - {label: "Текст", name: "body", widget: "markdown"}
   - name: "news_ru" # Used in routes, e.g., /admin/collections/blog
     label: "Новости (RU)" # Used in the UI
     folder: "content/ru/news" # The path to the folder where the markdown files are stored
