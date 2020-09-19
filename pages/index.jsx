@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react'
 import Page from '../components/Page'
+import { getPage } from '../api'
 
-export default function Index() {
+export default function Index({payload}) {
 
   useEffect(()=>{
     if (window.netlifyIdentity) {
@@ -16,6 +17,26 @@ export default function Index() {
   },[])
 
   return (
-    <Page lang={'ru'} payload={'index'}/>
+    <Page lang={'ru'} payload={payload}/>
   )
+}
+
+export async function getStaticPaths() {
+  const paths = [
+    '/',
+  ]
+  return {
+    paths,
+    fallback: false
+  }
+}
+
+export async function getStaticProps({ params }) {
+  const lang = 'ru'
+  const payload = await getPage({lang, slug:'index'})
+  return {
+    props: {
+      lang, payload
+    }
+  }
 }
