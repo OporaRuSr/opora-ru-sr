@@ -94,10 +94,18 @@ export async function getPage(props) {
   // console.log('getPage ', uri)
   const fileContent = fs.readFileSync(uri).toString();
   const meta = matter(fileContent)
-  console.log(meta)
+  // console.log(meta)
   return {
     title: meta.data.title,
     content: meta.content
+  }
+}
+
+export async function getCatalog(props) {
+  const {lang, slug} = props
+  return {
+    title: lang,
+    content: slug
   }
 }
 
@@ -109,6 +117,8 @@ export async function getPayload({type, lang, slug}) {
       return getBlog({lang, slug})
     case PAGE_TYPE.BLOG_PAGE:
       return getBlogPage({lang, slug})
+    case PAGE_TYPE.CATALOG:
+      return getCatalog({lang, slug})
     default:
       return {}
   }

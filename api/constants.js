@@ -8,7 +8,9 @@ export const LANG_LIST = [
 export const PAGE_TYPE = {
   BLOG: 'blog',
   BLOG_PAGE: 'blog_page',
-  PAGE: 'page'
+  PAGE: 'page',
+  CATALOG: 'catalog',
+  CATALOG_PAGE: 'catalog_page'
 }
 
 export const PAGES_TYPES = {
@@ -19,7 +21,7 @@ export const PAGES_TYPES = {
     type: PAGE_TYPE.BLOG
   },
   'catalog': {
-    type: PAGE_TYPE.BLOG
+    type: PAGE_TYPE.CATALOG
   },
   'cases': {
     type: PAGE_TYPE.BLOG

@@ -1,6 +1,7 @@
 import Page from '../../../components/Page'
 import Blog from '../../../components/Blog'
 import BlogPage from '../../../components/BlogPage'
+import Catalog from '../../../components/Catalog'
 
 import React from 'react'
 import { getPayload, getPageType, getPageLinks } from '../../../api'
@@ -26,6 +27,9 @@ export default function RoutePage({lang, payload, pageType}) {
     )
     case PAGE_TYPE.BLOG_PAGE: return (
       <BlogPage {...props}/>
+    )
+    case PAGE_TYPE.CATALOG: return (
+      <Catalog {...props}/>
     )
   }
 }
