@@ -8,6 +8,7 @@ collections:
     label: "Странички (RU)"
     folder: "content/ru/pages" # The path to the folder where the markdown files are stored
     create: false # Allow users to create new markdown files.
+    delete: false
     fields: # The fields for front matter. You will need to modify fields according to your project.
       - {label: "Заголовок", name: "title", widget: "string"}
       - {label: "Текст", name: "body", widget: "markdown"}
@@ -68,3 +69,37 @@ collections:
       - {label: "Краткое описание", name: "description", widget: "string"}
       - {label: "Заглавная картинка", name: "newsimage", widget: "image" }
       - {label: "Текст", name: "body", widget: "markdown"}
+  - name: "catalog_sr" # Used in routes, e.g., /admin/collections/blog
+    label: "Каталог компаний (SR)" # Used in the UI
+    folder: "content/sr/catalog" # The path to the folder where the markdown files are stored
+    create: true # Allow users to create new markdown files.
+    slug: "{{year}}-{{month}}-{{day}}-{{hour}}-{{minute}}-{{second}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for front matter. You will need to modify fields according to your project.
+      - {label: "Заголовок", name: "title", widget: "string"}
+      - {label: "Краткое описание", name: "description", widget: "string"}
+      - {label: "Заглавная картинка", name: "newsimage", widget: "image" }
+      - {label: "Текст", name: "body", widget: "markdown"}
+#  - name: "meta"
+#    label: "Meta"
+#    delete: false
+#    editor:
+#      preview: false
+#    files:
+#      - name: "tags"
+#        label: "Tags"
+#        file: "content/ru/catalog_tags/tags.yml"
+#        description: "List of tags"
+#        fields:
+#          - name: tags
+#            label: Tags
+#            label_singular: "Tag"
+#            widget: list
+#            fields:
+#              - label: "Slug"
+#                name: "slug"
+#                widget: "string"
+#                hint: "The part of a URL identifies the tag"
+#              - label: "Display Name"
+#                name: "name"
+#                widget: "string"
+#                hint: "Tag name for displaying on the site"
