@@ -68,6 +68,7 @@ collections:
       - {label: "Заголовок", name: "title", widget: "string"}
       - {label: "Краткое описание", name: "description", widget: "string"}
       - {label: "Заглавная картинка", name: "newsimage", widget: "image" }
+      - {label: "Теги", name: "tags", widget: "string" }
       - {label: "Текст", name: "body", widget: "markdown"}
   - name: "catalog_sr" # Used in routes, e.g., /admin/collections/blog
     label: "Каталог компаний (SR)" # Used in the UI
@@ -78,6 +79,7 @@ collections:
       - {label: "Заголовок", name: "title", widget: "string"}
       - {label: "Краткое описание", name: "description", widget: "string"}
       - {label: "Заглавная картинка", name: "newsimage", widget: "image" }
+      - {label: "Теги", name: "tags", widget: "string" }
       - {label: "Текст", name: "body", widget: "markdown"}
 #  - name: "meta"
 #    label: "Meta"
