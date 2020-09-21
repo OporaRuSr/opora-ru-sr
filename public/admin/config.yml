@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: RandomAmbersky/test-netlify-cms # Path to your GitHub repository
+  repo: OporaRuSr/opora-ru-sr # Path to your GitHub repository
 media_folder: public/img #images that are uploaded via Netlify Cms interface will be stored in this folder
 public_folder: img #I dont know
 collections:
