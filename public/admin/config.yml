@@ -1,6 +1,7 @@
 backend:
-  name: git-gateway
-  repo: OporaRuSr/opora-ru-sr # Path to your GitHub repository
+  name: github
+  repo: OporaRuSr/opora-ru-sr  # your GitHub username and repository name, separated by a slash
+  branch: master
 media_folder: public/img #images that are uploaded via Netlify Cms interface will be stored in this folder
 public_folder: img #I dont know
 collections:
