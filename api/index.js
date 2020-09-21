@@ -7,7 +7,7 @@ import path from 'path'
 
 const CONTENT_DIR = path.join(process.cwd(), 'content')
 
-import {PAGE_TYPE, PAGES_TYPES, LANG_LIST} from './constants'
+import {PAGE_TYPE, PAGE_HEADERS, PAGES_TYPES, LANG_LIST} from './constants'
 
 export function getPageType(name) {
   return PAGES_TYPES[name].type
@@ -80,9 +80,10 @@ export async function getBlog(props) {
       url: pageUri
     })
   })
-  // console.log('getBlog payload', links)
+  console.log('getBlog payload', links)
+  const title = PAGE_HEADERS[slug][lang]
   return {
-    title: uri,
+    title,
     links
   }
 }
