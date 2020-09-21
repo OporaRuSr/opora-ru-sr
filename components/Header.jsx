@@ -42,12 +42,12 @@ export default function Header({lang}) {
       <div className="flex flex-col sm:flex-col lg:flex-row xl:flex-row w-full items-center">
        <div className="ml-10 w-full lg:ml-20 lg:w-1/2 xl:w-1/2">
         <div className="flex flex-wrap items-end">
-          <div><img className="h-80 mt-3" src = "/opora.png"  alt={"Опора России"}/></div>
-          <div className="align-baseline ml-3"><h1 className="font-medium text-5xl leading-none">ОПОРА РОССИИ</h1></div>
+          <div ><img className="h-80 mt-3 mr-5" src = "/opora.png"  alt={"Опора России"}/></div>
+          <div className="align-baseline"><h1 className="font-medium text-5xl leading-none tracking-wide">ОПОРА  РОССИИ</h1></div>
         </div>
         <div className="">
-          <h6 className="text-xs">общероссийская общественная организация малого и среднего предпринимательства</h6>
-          <h2 className="font-medium text-3xl mb-2">ПРЕДСТАВИТЕЛЬСТВО В СЕРБИИ</h2>
+          <h6 className="text-xs tracking-tight">общероссийская общественная организация малого и среднего предпринимательства</h6>
+          <h2 className="font-medium text-3xl tracking-wide mb-2">ПРЕДСТАВИТЕЛЬСТВО  В  СЕРБИИ</h2>
         </div>
        </div>
       
