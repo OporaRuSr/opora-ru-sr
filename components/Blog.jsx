@@ -13,13 +13,23 @@ const Blog = ({lang, payload}) => {
             {payload.links.map(function(post, id) {
               return (
                 <li key={id}>
-                  <Link href={post.url}>
-                    <a>{post.title}
-                      <div><img src={post.newsimage} /></div>
-                    </a>
-                  </Link>
+                  <div className="shadow-lg p-8">
+                    <div className="w-1/4 ">
+                    <Link href={post.url}>
+                      <a>
+                        <div><img src={post.newsimage} /></div>
+                      </a>
+                    </Link>
+                    </div>
 
-                  <div>{post.description}</div>
+                    <Link href={post.url}>
+                      <a>{post.title}
+                      
+                      </a>
+                    </Link>
+                   <div>{post.description}</div>
+
+                  </div>  
                 </li>
               )
             })}
