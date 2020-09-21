@@ -11,7 +11,10 @@ export default function Layout(props) {
     <main>
       <Head>
         <title>{titleText}</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name='description' content={description}/>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap" rel="stylesheet"></link>
         <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"/>
       </Head>
       <Header lang={lang}/>
