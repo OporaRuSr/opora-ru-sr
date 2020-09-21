@@ -6,9 +6,6 @@ const Blog = ({lang, payload}) => {
   return (
       <Layout lang={lang} title={payload.title}>
         <div>
-          <h2>{payload.title}</h2>
-        </div>
-        <div>
           <ul>
             {payload.links.map(function(post, id) {
               return (
@@ -21,10 +18,8 @@ const Blog = ({lang, payload}) => {
                       </a>
                     </Link>
                     </div>
-
                     <Link href={post.url}>
                       <a>{post.title}
-                      
                       </a>
                     </Link>
                    <div>{post.description}</div>
