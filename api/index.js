@@ -103,7 +103,20 @@ export async function getPage(props) {
 }
 
 export async function getCatalog(props) {
+  console.log('getCatalog ', props)
   const {lang, slug} = props
+  const uri = `${CONTENT_DIR}/${lang}/${slug}`
+  console.log('getCatalog uri', uri)
+  const dir = fs.readdirSync(uri)
+  dir.map( item => {
+    if (!item.endsWith('.md')) {
+      return
+    }
+    const fileContent = fs.readFileSync(`${uri}/${item}`).toString();
+    const meta = matter(fileContent)
+    const pageUri = String(`/${lang}/${slug}/${item}`).replace('.md','')
+    console.log(meta, pageUri)
+  })
   return {
     title: lang,
     content: slug
