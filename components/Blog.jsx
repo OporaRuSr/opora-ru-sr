@@ -10,20 +10,31 @@ const Blog = ({lang, payload}) => {
             {payload.links.map(function(post, id) {
               return (
                 <li key={id}>
-                  <div className="shadow-lg p-8">
-                    <div className="w-1/4 ">
+                  <div className="flex flex-col lg:flex-row justify-center lg:justify-start shadow-lg">
+                    <div className="w-auto m-3 my-8 lg:w-1/4 lg:m-8 text-center">
                     <Link href={post.url}>
                       <a>
                         <div><img src={post.newsimage} /></div>
                       </a>
                     </Link>
                     </div>
-                    <Link href={post.url}>
-                      <a>{post.title}
-                      </a>
-                    </Link>
-                   <div>{post.description}</div>
-
+                    <div className="m-3 mb-8 lg:m-8 lg:w-3/4 text-xl">
+                     <div><p >08.09.2020</p>  </div>
+                     <div className="my-6 text-blue-600 underline font-bold hover:text-blue-800">
+                      <Link href={post.url}>
+                        <a>{post.title} стена текста Стена текста стена текстастена текста Стена текста стена 
+                        стена текста Стена текста стена текстастена текста Стена текста стена текстатекстастена текста 
+                        Стена текста стена текста</a>
+                      </Link>
+                     </div>
+                     <div className="text-lg">{post.description}стена текста Стена текста стена текстастена текста Стена текста стена 
+                        стена текста Стена текста стена текстастена текста Стена текста стена текстатекстастена текста 
+                        Стена текста стена текстастена текста Стена текста стена текстастена текста Стена текста стена 
+                        стена текста Стена текста стена текстастена текста Стена текста стена текстатекстастена текста 
+                        Стена текста стена текстастена текста Стена текста стена текстастена текста Стена текста стена 
+                        стена текста Стена текста стена текстастена текста Стена текста стена текстатекстастена текста 
+                        Стена текста стена текста</div>
+                   </div>
                   </div>  
                 </li>
               )
