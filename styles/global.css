@@ -4,6 +4,10 @@ html {
     font-family: 'Roboto', sans-serif;
 }
 
+body {
+    /*background-color: #edf2f7;*/
+    background-color: #e2e8f0;
+}
 .oporaHeader {
     @apply bg-blue-800 text-white
 }

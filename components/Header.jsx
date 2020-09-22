@@ -63,7 +63,7 @@ export default function Header({lang}) {
       </div>
 
       <div className="w-full bg-white text-blue-800 text-3xl shadow-lg py-0">
-        <nav className="flex flex-col lg:flex-row xl:flex-row w-full py-0 shadow-lg">
+        <nav className="flex flex-col lg:flex-row xl:flex-row w-full py-0 shadow-md">
           <Links lang={lang} />
       </nav>
       </div>  
