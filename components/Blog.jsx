@@ -1,6 +1,6 @@
-import Layout from './Layout'
+import React from 'react'
 import Link from 'next/link'
-
+import Layout from './Layout'
 
 const Blog = ({lang, payload}) => {
   // console.log('Blog payload: ', payload)
