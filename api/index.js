@@ -53,7 +53,7 @@ export async function getBlogPage({lang,slug}) {
   const meta = matter(fileContent)
   // console.log('getBlogPage', meta)
   return {
-    title: meta.data.title,
+    meta: meta.data,
     content: meta.content
   }
 }
