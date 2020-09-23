@@ -102,12 +102,30 @@ export async function getPage(props) {
   }
 }
 
+const __parseTags = (tags) => {
+  const tagList = tags.split(',').map( item => {
+    return item.trim()
+  })
+  return tagList
+}
+
+const __tagsToLinks = (tags) => {
+  return tags.map( tag => {
+    return {
+      name: tag,
+      link: tag
+    }
+  })
+}
+
 export async function getCatalog(props) {
   console.log('getCatalog ', props)
   const {lang, slug} = props
   const uri = `${CONTENT_DIR}/${lang}/${slug}`
   console.log('getCatalog uri', uri)
   const dir = fs.readdirSync(uri)
+  const tags = []
+  const links = []
   dir.map( item => {
     if (!item.endsWith('.md')) {
       return
@@ -115,11 +133,27 @@ export async function getCatalog(props) {
     const fileContent = fs.readFileSync(`${uri}/${item}`).toString();
     const meta = matter(fileContent)
     const pageUri = String(`/${lang}/${slug}/${item}`).replace('.md','')
-    console.log(meta, pageUri)
+    const tagList = __parseTags(meta.data.tags)
+
+    links.push({
+      title: meta.data.title,
+      description: meta.data.description,
+      newsimage: meta.data.newsimage,
+      url: pageUri
+    })
+
+    // console.log(tagList)
+    tagList.forEach( item => {
+      tags[item]=''
+    })
+    console.log(tags)
   })
+
+  const title = PAGE_HEADERS[slug][lang]
   return {
-    title: lang,
-    content: slug
+    title,
+    links,
+    tags: __tagsToLinks(Object.keys(tags))
   }
 }
 
