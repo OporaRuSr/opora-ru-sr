@@ -21,7 +21,7 @@ export default function BlogPage({lang, payload}) {
             
              <img src={payload.meta.newsimage} />
            </div>
-           <div className="text-base m-6">
+           <div className="text-base mb-6 mr-6">
               {payload.meta.description}
            </div>
           </div>
