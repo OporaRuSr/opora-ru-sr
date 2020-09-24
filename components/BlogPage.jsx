@@ -11,7 +11,7 @@ export default function BlogPage({lang, payload}) {
       <div className="w-full lg:w-3/4 mt-5 mx-3 text-center text-blue-700 text-xl">
          <h1>{payload.meta.title}</h1>
       </div>   
-      <div className="w-full my-5 py-8 lg:mx-5 bg-white shadow-md lg:w-3/4">
+      <div className="w-full my-5 py-8 lg:mx-5 bg-white shadow-md lg:w-1200">
         <div className="mx-8 ">
           <div className="flex flex-col lg:flex-row">
            <div className="text-xl">

@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
 
-      spasing: {
+      spacing: {
         '1200' : '1200px',
       },
     },
