@@ -8,7 +8,12 @@ module.exports = {
     "./components/**/*.jsx",
   ],
   theme: {
-    extend: {},
+    extend: {
+
+      spacing: {
+        '1200' : '1200px',
+      },
+    },
   },
   variants: {},
   plugins: [],
