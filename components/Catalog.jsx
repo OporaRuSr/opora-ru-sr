@@ -6,8 +6,12 @@ export default function Catalog({lang, payload}) {
   console.log('Catalog props: ', lang, payload)
   return (
     <Layout lang={lang} title={payload.title}>
-      <h1>Каталог компаний</h1>
-      <div>
+      <div className="w-full flex flex-wrap justify-center">
+
+      <div className="w-full lg:w-1200 mt-5 text-center text-blue-700 text-xl"><h1>Каталог компаний</h1></div>
+
+      <div className="flex flex-wrap mt-5 w-full lg:w-1200">
+      <div className="w-1/4">
         <ul>
           {
             payload.tags.map(function(tag, id) {
@@ -20,7 +24,7 @@ export default function Catalog({lang, payload}) {
           }
         </ul>
       </div>
-      <div>
+      <div className="w-3/4">
         <ul>
         {
           payload.links.map(function(post, id) {
@@ -28,7 +32,7 @@ export default function Catalog({lang, payload}) {
               <li key={id}>
                 <Link href={post.url}>
                   <a>
-                    <div>
+                    <div className="bg-white mb-5 shadow-md">
                       <img src={post.newsimage} />
                       <div>{post.title}</div>
                       <div>{post.description}</div>
@@ -40,6 +44,9 @@ export default function Catalog({lang, payload}) {
           })
         }
         </ul>
+      </div>
+      </div>
+
       </div>
     </Layout>
   )

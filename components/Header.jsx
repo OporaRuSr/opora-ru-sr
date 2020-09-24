@@ -22,8 +22,8 @@ const menu = {
 
 const HeaderLink = ({name, url}) => {
   return (
-    <Link href={url}><a className="w-full lg:w-1/4 xl:w-1/4 hover:text-white py-0 my-3">
-      <div className="mx-5 hover:bg-blue-800 text-center">{name}</div></a>
+    <Link href={url}><a className="w-full lg:w-1/4 xl:w-1/4 py-0 my-3">
+      <div className="mr-5 hover:bg-blue-800 text-center hover:text-white">{name}</div></a>
     </Link>
   )
 }
@@ -40,8 +40,9 @@ export default function Header({lang}) {
   const headerLink = "/" + lang
   return (
     <header className="oporaHeader">
-      <div className="flex flex-col lg:flex-row xl:flex-row w-full items-center">
-       <div className="w-full mb-2 lg:ml-20 lg:w-1/2 xl:w-1/2">
+      <div className="flex flex-wrap w-full justify-center ">
+      <div className="flex flex-col lg:ml-5 lg:flex-row xl:flex-row w-1200 items-center">
+       <div className="w-full mb-2 lg:w-1/2 xl:w-1/2">
        <Link href={headerLink}><a>
         <div className="flex flex-wrap w-full justify-center lg:justify-start items-end text-center">
           <div ><img className="h-80 mt-3 mr-5" src = "/opora.png"  alt={"Опора России"}/></div>
@@ -65,13 +66,15 @@ export default function Header({lang}) {
          </div>
        </div>
       </div>
+      </div>
 
-      <div className="w-full bg-white text-blue-800 text-3xl shadow-lg py-0">
-        <nav className="flex flex-col lg:flex-row xl:flex-row w-full py-0 shadow-md">
+      <div className="flex flex-wrap w-full justify-center bg-white shadow-md">
+      <div className="w-full lg:w-1200 text-blue-800 text-3xl py-0">
+        <nav className="flex flex-col lg:flex-row xl:flex-row w-full py-0">
           <Links lang={lang} />
-      </nav>
+        </nav>
       </div>  
-      <div className="h-15 bg-white"></div>
+      </div>
     </header>
   )
 }
