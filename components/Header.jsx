@@ -37,20 +37,22 @@ const Links = ({lang}) => {
 }
 
 export default function Header({lang}) {
+  const headerLink = "/" + lang
   return (
     <header className="oporaHeader">
       <div className="flex flex-col sm:flex-col lg:flex-row xl:flex-row w-full items-center">
        <div className="ml-10 w-full lg:ml-20 lg:w-1/2 xl:w-1/2">
+        <Link href={headerLink}><a>
         <div className="flex flex-wrap items-end">
-          <div ><img className="h-80 mt-3 mr-5" src = "/opora.png"  alt={"Опора России"}/></div>
+          <div><img className="h-80 mt-3 mr-5" src = "/opora.png"  alt={"Опора России"}/></div>
           <div className="align-baseline"><h1 className="font-medium text-5xl leading-none">ОПОРА РОССИИ</h1></div>
         </div>
         <div className="">
           <h6 className="text-xs mt-1">общероссийская общественная организация малого и&nbsp;среднего предпринимательства</h6>
           <h2 className="font-medium text-3xl tracking-wide mb-2">ПРЕДСТАВИТЕЛЬСТВО В&nbsp;СЕРБИИ</h2>
         </div>
+        </a></Link>
        </div>
-      
        <div className="w-full lg:w-1/2 text-right">
          {/*<div className="text-base text-right absolute right-0">*/}
          <div className="text-base text-right sm:text-center lg:text-right">
