@@ -129,7 +129,7 @@ const __tagsToLinks = (baseurl, tags) => {
   return tags.map( tag => {
     return {
       name: tag,
-      link: path.join('/', baseurl, tag)
+      link: path.join('/', baseurl, 'tags', tag)
     }
   })
 }
@@ -148,7 +148,7 @@ export async function getCatalog(props) {
     }
     const fileContent = fs.readFileSync(`${uri}/${item}`).toString();
     const meta = matter(fileContent)
-    const pageUri = String(`/${lang}/${slug}/${item}`).replace('.md','')
+    const pageUri = path.join('/', lang, slug, 'page', item).replace('.md','')
     const tagList = __parseTags(meta.data.tags)
 
     links.push({
