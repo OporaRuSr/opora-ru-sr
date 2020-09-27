@@ -1,9 +1,14 @@
 import React from 'react'
+// import { useRouter } from 'next/router'
 import Layout from './Layout'
 import Link from 'next/link'
 
-export default function Catalog({lang, payload}) {
-  console.log('Catalog props: ', lang, payload)
+export default function Catalog(props) {
+  const {lang, payload} = props
+  // const router = useRouter()
+  // console.log('Catalog router:', router.query)
+  console.log('Catalog props:', payload.tags)
+  // console.log('Catalog props: ', lang, payload)
   return (
     <Layout lang={lang} title={payload.title}>
       <div className="w-full flex flex-wrap justify-center">
@@ -17,7 +22,7 @@ export default function Catalog({lang, payload}) {
             payload.tags.map(function(tag, id) {
               return (
                 <li key={id}>
-                  <Link href={tag.name}><>#{tag.link}</></Link>
+                  <Link href={tag.link}><a>#{tag.name}</a></Link>
                 </li>
               )
             })

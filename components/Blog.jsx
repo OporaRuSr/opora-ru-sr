@@ -25,7 +25,7 @@ const Blog = ({lang, payload}) => {
                      <div><p >08.09.2020</p>  </div>
                      <div className="my-6 text-blue-600 underline font-bold hover:text-blue-800">
                       <Link href={post.url}>
-                        <a>{post.title} </a>
+                        <a>{post.title}</a>
                       </Link>
                      </div>
                      <div className="text-lg">{post.description}</div>
