@@ -3,6 +3,22 @@ import React from 'react'
 import Layout from './Layout'
 import Link from 'next/link'
 
+const TagList = ({tags}) => {
+  return (
+    <ul>
+    {
+      tags.map(function(tag, id) {
+        return (
+          <li key={id}>
+            <Link href={tag.link}><a>#{tag.name}</a></Link>
+          </li>
+        )
+      })
+    }
+  </ul>
+  )
+}
+
 export default function Catalog(props) {
   const {lang, payload} = props
   // const router = useRouter()
@@ -16,17 +32,7 @@ export default function Catalog(props) {
 
       <div className="flex flex-wrap mt-5 w-full lg:w-1200">
       <div className="w-1/4">
-        <ul>
-          {
-            payload.tags.map(function(tag, id) {
-              return (
-                <li key={id}>
-                  <Link href={tag.link}><a>#{tag.name}</a></Link>
-                </li>
-              )
-            })
-          }
-        </ul>
+        <TagList tags={payload.tags}/>
       </div>
       <div className="w-3/4">
         <ul>
