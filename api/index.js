@@ -29,6 +29,22 @@ export async function getPageLinks(sortType=null) {
   return ret
 }
 
+export async function getAllCatalogPageLinks () {
+  const result = []
+  const links = await getPageLinks(PAGE_TYPE.CATALOG)
+  links.forEach(catalogDir => {
+    const uri = path.join(CONTENT_DIR, catalogDir)
+    const dir = fs.readdirSync(uri)
+    dir.forEach( fileName => {
+      if (fileName.endsWith('.md')) {
+        const filePath = path.join(catalogDir, 'page', fileName).replace('.md','')
+        result.push(filePath)
+      }
+    })
+  })
+  return result
+}
+
 export async function getAllBlogPageLinks() {
   const result = []
   const links = await getPageLinks(PAGE_TYPE.BLOG)
@@ -80,7 +96,7 @@ export async function getBlog(props) {
       url: pageUri
     })
   })
-  console.log('getBlog payload', links)
+  // console.log('getBlog payload', links)
   const title = PAGE_HEADERS[slug][lang]
   return {
     title,
@@ -109,20 +125,20 @@ const __parseTags = (tags) => {
   return tagList
 }
 
-const __tagsToLinks = (tags) => {
+const __tagsToLinks = (baseurl, tags) => {
   return tags.map( tag => {
     return {
       name: tag,
-      link: tag
+      link: path.join('/', baseurl, 'tags', tag)
     }
   })
 }
 
 export async function getCatalog(props) {
-  console.log('getCatalog ', props)
+  // console.log('getCatalog ', props)
   const {lang, slug} = props
-  const uri = `${CONTENT_DIR}/${lang}/${slug}`
-  console.log('getCatalog uri', uri)
+  const uri = path.join(CONTENT_DIR, lang, slug)
+  // console.log('getCatalog uri', uri)
   const dir = fs.readdirSync(uri)
   const tags = []
   const links = []
@@ -132,7 +148,7 @@ export async function getCatalog(props) {
     }
     const fileContent = fs.readFileSync(`${uri}/${item}`).toString();
     const meta = matter(fileContent)
-    const pageUri = String(`/${lang}/${slug}/${item}`).replace('.md','')
+    const pageUri = path.join('/', lang, slug, 'page', item).replace('.md','')
     const tagList = __parseTags(meta.data.tags)
 
     links.push({
@@ -146,14 +162,15 @@ export async function getCatalog(props) {
     tagList.forEach( item => {
       tags[item]=''
     })
-    console.log(tags)
+    // console.log(tags)
   })
 
   const title = PAGE_HEADERS[slug][lang]
+  const baseUrl = path.join(lang,slug)
   return {
     title,
     links,
-    tags: __tagsToLinks(Object.keys(tags))
+    tags: __tagsToLinks(baseUrl, Object.keys(tags))
   }
 }
 

@@ -1,9 +1,29 @@
 import React from 'react'
+// import { useRouter } from 'next/router'
 import Layout from './Layout'
 import Link from 'next/link'
 
-export default function Catalog({lang, payload}) {
-  console.log('Catalog props: ', lang, payload)
+const TagList = ({tags}) => {
+  return (
+    <ul>
+    {
+      tags.map(function(tag, id) {
+        return (
+          <li key={id}>
+            <Link href={tag.link}><a>#{tag.name}</a></Link>
+          </li>
+        )
+      })
+    }
+  </ul>
+  )
+}
+
+export default function Catalog(props) {
+  const {lang, payload} = props
+  // const router = useRouter()
+  // console.log('Catalog router:', router.query)
+  // console.log('Catalog props: ', lang, payload)
   return (
     <Layout lang={lang} title={payload.title}>
       
@@ -11,7 +31,6 @@ export default function Catalog({lang, payload}) {
       <div className="oporaPageHead w-full"><h1>Каталог компаний</h1></div>
 
       <div className="flex flex-wrap w-full">
-      {/*<div className="w-full flex flex-wrap lg:flex-col lg:w-1/4">*/}
         <ul className="w-full lg:w-1/4">
         <div className="w-full flex flex-wrap lg:flex-col text-lg mb-5">
          {
@@ -27,7 +46,6 @@ export default function Catalog({lang, payload}) {
           }
        </div>
        </ul>
-      {/*</div>*/}
       <div className="w-full lg:w-3/4">
         <ul>
         {
