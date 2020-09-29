@@ -40,12 +40,12 @@ export const PAGE_HEADERS = {
     ru: 'Кейсы',
     sr: 'Случајеви'
   },
-  'about': {
-    ru: 'О нас',
-    sr: 'О нама'
-  },
   'catalog': {
     ru: 'Каталог',
     sr: 'Каталог'
+  },
+  'about': {
+    ru: 'О нас',
+    sr: 'О нама'
   }
 }

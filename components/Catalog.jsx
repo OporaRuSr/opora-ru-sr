@@ -1,33 +1,42 @@
 import React from 'react'
+// import { useRouter } from 'next/router'
 import Layout from './Layout'
 import Link from 'next/link'
 
-export default function Catalog({lang, payload}) {
-  console.log('Catalog props: ', lang, payload)
+const TagList = ({tags}) => {
+  return (
+    <ul className="w-full lg:w-1/4">
+      <div className="w-full flex flex-wrap lg:flex-col text-lg mb-5">
+      {
+        tags.map(function(tag, id) {
+          return (
+            <div className="ml-5">
+              <li key={id}>
+                  <Link href={tag.link}><a>#{tag.name+' '}</a></Link>
+                  <Link href={tag.link}><a>#{tag.name+' '}</a></Link>
+                  <Link href={tag.link}><a>#{tag.name+' '}</a></Link>
+                  <Link href={tag.link}><a>#{tag.name+' '}</a></Link>
+                  <Link href={tag.link}><a>#{tag.name+' '}</a></Link>
+              </li>
+            </div>
+          )
+        })
+      }
+      </div>
+    </ul>
+  )
+}
+
+export default function Catalog(props) {
+  const {lang, payload} = props
+  // const router = useRouter()
+  // console.log('Catalog router:', router.query)
+  // console.log('Catalog props: ', lang, payload)
   return (
     <Layout lang={lang} title={payload.title}>
-      
-
       <div className="oporaPageHead w-full"><h1>Каталог компаний</h1></div>
-
       <div className="flex flex-wrap w-full">
-      {/*<div className="w-full flex flex-wrap lg:flex-col lg:w-1/4">*/}
-        <ul className="w-full lg:w-1/4">
-        <div className="w-full flex flex-wrap lg:flex-col text-lg mb-5">
-         {
-            payload.tags.map(function(tag, id) {
-              return (
-                <div className="ml-5">
-                <li key={id}>
-                  <Link href={tag.name}><>#{tag.link}</></Link>
-                </li>
-                </div>
-              )
-            })
-          }
-       </div>
-       </ul>
-      {/*</div>*/}
+        <TagList tags={payload.tags} />
       <div className="w-full lg:w-3/4">
         <ul>
         {
