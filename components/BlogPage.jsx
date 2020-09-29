@@ -8,16 +8,16 @@ export default function BlogPage({lang, payload}) {
     <Layout lang={lang} title={payload.meta.title}>
       
       
-      <div className="oporaPageHead w-full mx-3">
+      <div className="oporaPageHead w-full px-3">
          <h1>{payload.meta.title}</h1>
       </div>   
-      <div className="oporaWhiteBlock w-full lg:mx-5">
+      <div className="oporaWhiteBlock lg:mx-5">
         <div className="">
           <div className="flex flex-col lg:flex-row">
            <div className="oporaDate">
             <p >08.09.2020</p>  
            </div>
-           <div className="w-full lg:flex-none lg:mx-6 lg:w-1/2">
+           <div className="w-full lg:flex-none lg:mx-6 lg:mb-6 lg:w-1/2">
             
              <img className="w-full" src={payload.meta.newsimage} />
            </div>

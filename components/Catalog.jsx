@@ -11,20 +11,24 @@ export default function Catalog({lang, payload}) {
       <div className="oporaPageHead w-full"><h1>Каталог компаний</h1></div>
 
       <div className="flex flex-wrap w-full">
-      <div className="w-1/4">
-        <ul>
-          {
+      {/*<div className="w-full flex flex-wrap lg:flex-col lg:w-1/4">*/}
+        <ul className="w-full lg:w-1/4">
+        <div className="w-full flex flex-wrap lg:flex-col text-lg mb-5">
+         {
             payload.tags.map(function(tag, id) {
               return (
+                <div className="ml-5">
                 <li key={id}>
                   <Link href={tag.name}><>#{tag.link}</></Link>
                 </li>
+                </div>
               )
             })
           }
-        </ul>
-      </div>
-      <div className="w-3/4">
+       </div>
+       </ul>
+      {/*</div>*/}
+      <div className="w-full lg:w-3/4">
         <ul>
         {
           payload.links.map(function(post, id) {
@@ -32,10 +36,14 @@ export default function Catalog({lang, payload}) {
               <li key={id}>
                 <Link href={post.url}>
                   <a>
-                    <div className="oporaWhiteBlock">
-                      <img src={post.newsimage} />
-                      <div>{post.title}</div>
-                      <div>{post.description}</div>
+                    <div className="oporaWhiteBlock flex flex-col lg:flex-row">
+                      <div className="oporaImgNews lg:mb-0 lg:w-1/3 lg:mr-6">
+                        <img className="w-full" src={post.newsimage} />
+                      </div>
+                      <div className="w-full lg:ml-6 lg:w-2/3">
+                        <div className="oporaLinkNews ">{post.title}</div>
+                        <div>{post.description}</div>
+                      </div>
                     </div>
                   </a>
                 </Link>

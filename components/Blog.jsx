@@ -13,8 +13,8 @@ const Blog = ({lang, payload}) => {
                 <li key={id}>
                   
                   
-                  <div className="oporaWhiteBlock w-full flex flex-col lg:flex-row">
-                    <div className="w-full mb-6 lg:mb-0 lg:w-1/3 lg:mr-6 text-center">
+                  <div className="oporaWhiteBlock flex flex-col lg:flex-row">
+                    <div className="oporaImgNews lg:mb-0 lg:w-1/3 lg:mr-6">
                     <Link href={post.url}>
                       <a>
                         <img className="w-full" src={post.newsimage} />
