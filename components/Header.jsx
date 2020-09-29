@@ -1,24 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-const menu = {
-  'news': {
-    ru: 'Новости',
-    sr: 'Вести'
-  },
-  'cases': {
-    ru: 'Кейсы',
-    sr: 'Случајеви'
-  },
-  'catalog': {
-    ru: 'Каталог',
-    sr: 'Каталог'
-  },
-  'about': {
-    ru: 'О нас',
-    sr: 'О нама'
-  }
-}
+import {PAGE_HEADERS} from '../api/constants'
 
 const HeaderLink = ({name, url}) => {
   return (
@@ -29,9 +12,9 @@ const HeaderLink = ({name, url}) => {
 }
 
 const Links = ({lang}) => {
-  return Object.keys(menu).map(index=>{
+  return Object.keys(PAGE_HEADERS).map(index=>{
     return (
-        <HeaderLink key={index} name={menu[index][lang]} url={'/'+lang+'/'+index} />
+        <HeaderLink key={index} name={PAGE_HEADERS[index][lang]} url={'/'+lang+'/'+index} />
     )
   })
 }
