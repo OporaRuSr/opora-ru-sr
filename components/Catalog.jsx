@@ -13,10 +13,6 @@ const TagList = ({tags}) => {
             <div className="ml-5">
               <li key={id}>
                   <Link href={tag.link}><a>#{tag.name+' '}</a></Link>
-                  <Link href={tag.link}><a>#{tag.name+' '}</a></Link>
-                  <Link href={tag.link}><a>#{tag.name+' '}</a></Link>
-                  <Link href={tag.link}><a>#{tag.name+' '}</a></Link>
-                  <Link href={tag.link}><a>#{tag.name+' '}</a></Link>
               </li>
             </div>
           )
