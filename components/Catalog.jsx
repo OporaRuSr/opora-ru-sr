@@ -5,17 +5,25 @@ import Link from 'next/link'
 
 const TagList = ({tags}) => {
   return (
-    <ul>
-    {
-      tags.map(function(tag, id) {
-        return (
-          <li key={id}>
-            <Link href={tag.link}><a>#{tag.name}</a></Link>
-          </li>
-        )
-      })
-    }
-  </ul>
+    <ul className="w-full lg:w-1/4">
+      <div className="w-full flex flex-wrap lg:flex-col text-lg mb-5">
+      {
+        tags.map(function(tag, id) {
+          return (
+            <div className="ml-5">
+              <li key={id}>
+                  <Link href={tag.link}><a>#{tag.name+' '}</a></Link>
+                  <Link href={tag.link}><a>#{tag.name+' '}</a></Link>
+                  <Link href={tag.link}><a>#{tag.name+' '}</a></Link>
+                  <Link href={tag.link}><a>#{tag.name+' '}</a></Link>
+                  <Link href={tag.link}><a>#{tag.name+' '}</a></Link>
+              </li>
+            </div>
+          )
+        })
+      }
+      </div>
+    </ul>
   )
 }
 
@@ -26,26 +34,9 @@ export default function Catalog(props) {
   // console.log('Catalog props: ', lang, payload)
   return (
     <Layout lang={lang} title={payload.title}>
-      
-
       <div className="oporaPageHead w-full"><h1>Каталог компаний</h1></div>
-
       <div className="flex flex-wrap w-full">
-        <ul className="w-full lg:w-1/4">
-        <div className="w-full flex flex-wrap lg:flex-col text-lg mb-5">
-         {
-            payload.tags.map(function(tag, id) {
-              return (
-                <div className="ml-5">
-                <li key={id}>
-                  <Link href={tag.name}><>#{tag.link}</></Link>
-                </li>
-                </div>
-              )
-            })
-          }
-       </div>
-       </ul>
+        <TagList tags={payload.tags} />
       <div className="w-full lg:w-3/4">
         <ul>
         {
