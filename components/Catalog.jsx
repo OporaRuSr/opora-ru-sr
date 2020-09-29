@@ -6,11 +6,11 @@ export default function Catalog({lang, payload}) {
   console.log('Catalog props: ', lang, payload)
   return (
     <Layout lang={lang} title={payload.title}>
-      <div className="w-full flex flex-wrap justify-center">
+      
 
-      <div className="w-full lg:w-1200 mt-5 text-center text-blue-700 text-xl"><h1>Каталог компаний</h1></div>
+      <div className="oporaPageHead w-full"><h1>Каталог компаний</h1></div>
 
-      <div className="flex flex-wrap mt-5 w-full lg:w-1200">
+      <div className="flex flex-wrap w-full">
       <div className="w-1/4">
         <ul>
           {
@@ -32,7 +32,7 @@ export default function Catalog({lang, payload}) {
               <li key={id}>
                 <Link href={post.url}>
                   <a>
-                    <div className="bg-white mb-5 shadow-md">
+                    <div className="oporaWhiteBlock">
                       <img src={post.newsimage} />
                       <div>{post.title}</div>
                       <div>{post.description}</div>
@@ -47,7 +47,7 @@ export default function Catalog({lang, payload}) {
       </div>
       </div>
 
-      </div>
+      
     </Layout>
   )
 }
