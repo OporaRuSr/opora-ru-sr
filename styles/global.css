@@ -9,11 +9,27 @@ body {
     background-color: #e2e8f0;
 }
 .oporaHeader {
-    @apply bg-blue-800 text-white
+    @apply bg-blue-800 text-white;
 }
 
 .oporaFooter {
-    @apply bg-blue-800 text-white
+    @apply bg-blue-800 text-white;
+}
+
+.oporaWhiteBlock {
+    @apply bg-white p-8 mb-5 text-lg shadow-md;
+}
+
+.oporaDate {
+    @apply text-xl;
+}
+
+.oporaLinkNews {
+    @apply text-blue-600 text-xl underline font-bold;
+}
+
+.oporaPageHead {
+    @apply text-center text-blue-700 text-xl mb-5;
 }
 
 @tailwind components;

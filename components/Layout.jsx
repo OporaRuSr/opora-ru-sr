@@ -18,7 +18,12 @@ export default function Layout(props) {
         <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"/>
       </Head>
       <Header lang={lang}/>
-      {props.children}
+
+      <div className="w-full flex flex-wrap justify-center">
+        <div className="mt-5 w-full lg:w-1200">
+          {props.children}
+        </div>
+      </div>
       <Footer/>
     </main>
   )

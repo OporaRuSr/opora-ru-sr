@@ -6,26 +6,26 @@ export default function BlogPage({lang, payload}) {
   // console.log('BlogPage props: ', lang, payload)
   return (
     <Layout lang={lang} title={payload.meta.title}>
-      <div className="w-full flex flex-wrap justify-center">
       
-      <div className="w-full lg:w-3/4 mt-5 mx-3 text-center text-blue-700 text-xl">
+      
+      <div className="oporaPageHead w-full mx-3">
          <h1>{payload.meta.title}</h1>
       </div>   
-      <div className="w-full my-5 py-8 lg:mx-5 bg-white shadow-md lg:w-1200">
-        <div className="mx-8 ">
+      <div className="oporaWhiteBlock w-full lg:mx-5">
+        <div className="">
           <div className="flex flex-col lg:flex-row">
-           <div className="text-xl">
+           <div className="oporaDate">
             <p >08.09.2020</p>  
            </div>
-           <div className="w-full lg:flex-none lg:mx-6 mb-6 lg:w-1/2">
+           <div className="w-full lg:flex-none lg:mx-6 lg:w-1/2">
             
-             <img src={payload.meta.newsimage} />
+             <img className="w-full" src={payload.meta.newsimage} />
            </div>
-           <div className="text-base mb-6 mr-6">
+           <div className="text-base my-6 mr-6 lg:mt-0">
               {payload.meta.description}
            </div>
           </div>
-          <div className="text-lg">
+          <div className="">
               <ReactMarkdown source={payload.content} />
           </div>
 
@@ -33,7 +33,6 @@ export default function BlogPage({lang, payload}) {
         </div>
       </div>
 
-      </div>
     </Layout>
   )
 }
