@@ -2,22 +2,22 @@ import React from 'react'
 import Link from 'next/link'
 
 const menu = {
-    'news': {
-      ru: 'Новости',
-      sr: 'Вести'
-    },
-    'cases': {
-      ru: 'Кейсы',
-      sr: 'Случајеви'
-    },
-    'about': {
-      ru: 'О нас',
-      sr: 'О нама'
-    },
-    'catalog': {
-      ru: 'Каталог',
-      sr: 'Каталог'
-    },
+  'news': {
+    ru: 'Новости',
+    sr: 'Вести'
+  },
+  'cases': {
+    ru: 'Кейсы',
+    sr: 'Случајеви'
+  },
+  'catalog': {
+    ru: 'Каталог',
+    sr: 'Каталог'
+  },
+  'about': {
+    ru: 'О нас',
+    sr: 'О нама'
+  }
 }
 
 const HeaderLink = ({name, url}) => {
