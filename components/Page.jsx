@@ -11,7 +11,7 @@ const Page = ({lang, payload}) => {
         <div className="oporaWhiteBlock lg:mx-5">
           <ReactMarkdown source={payload.content} />
         </div>
-       </Layout>
+      </Layout>
   )
 }
 

@@ -25,9 +25,6 @@ const TagList = ({tags}) => {
 
 export default function Catalog(props) {
   const {lang, payload} = props
-  // const router = useRouter()
-  // console.log('Catalog router:', router.query)
-  // console.log('Catalog props: ', lang, payload)
   return (
     <Layout lang={lang} title={payload.title}>
       <div className="oporaPageHead w-full"><h1>Каталог компаний</h1></div>
