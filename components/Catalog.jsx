@@ -10,8 +10,8 @@ const TagList = ({tags}) => {
       {
         tags.map(function(tag, id) {
           return (
-            <div className="ml-5">
-              <li key={id}>
+            <div key={id} className="ml-5">
+              <li>
                   <Link href={tag.link}><a>#{tag.name+' '}</a></Link>
               </li>
             </div>
