@@ -6,7 +6,7 @@ import CatalogTags from '../../../../components/CatalogTags'
 
 export default function page({pageType, lang, payload}) {
     const props = {lang, payload}
-    console.log('[catalog].jsx props ', props)
+    // console.log('[catalog].jsx props ', props)
     switch (pageType) {
         case 'page': return (
           <CatalogPage {...props}/>

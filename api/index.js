@@ -67,11 +67,16 @@ export async function getBlogPage({lang,slug}) {
   const uri = `${CONTENT_DIR}/${lang}/${slug}.md`
   const fileContent = fs.readFileSync(uri).toString();
   const meta = matter(fileContent)
-  // console.log('getBlogPage', meta)
+  console.log('getBlogPage', meta)
   return {
     meta: meta.data,
     content: meta.content
   }
+}
+
+const __getDataFromName = (name) => {
+  const part = name.replace('.md','').split('-')
+  return `${part[2]}.${part[1]}.${part[0]} ${part[3]}:${part[4]}`
 }
 
 export async function getBlog(props) {
@@ -81,6 +86,7 @@ export async function getBlog(props) {
   const uri = `${CONTENT_DIR}/${lang}/${slug}`
   // console.log('getBlog uri', uri)
   const dir = fs.readdirSync(uri)
+  dir.sort().reverse()
   dir.map( item => {
     if (!item.endsWith('.md')) {
       return
@@ -89,7 +95,11 @@ export async function getBlog(props) {
     const meta = matter(fileContent)
     const pageUri = String(`/${lang}/${slug}/${item}`).replace('.md','')
     // console.log('getBlog item', item, meta)
+    
+    const datastr = __getDataFromName(item)
+
     links.push({
+      datastr,
       title: meta.data.title,
       description: meta.data.description,
       newsimage: meta.data.newsimage,
