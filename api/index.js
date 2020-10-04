@@ -13,15 +13,15 @@ export function getPageType(name) {
   return PAGES_TYPES[name].type
 }
 
-export async function getPageLinks(sortType=null) {
+export async function getPageLinks(selectType=null) {
   const ret = []
   LANG_LIST.forEach( item => {
     Object.keys(PAGES_TYPES).forEach(item2=>{
-      if (!sortType) {
+      if (!selectType) {
         ret.push(`/${item}/${item2}`)
         return
       }
-      if (PAGES_TYPES[item2].type === sortType) {
+      if (PAGES_TYPES[item2].type === selectType) {
         ret.push(`/${item}/${item2}`)
       }
     })
@@ -68,20 +68,15 @@ export async function getBlogPage({lang,slug}) {
   const fileContent = fs.readFileSync(uri).toString();
   const meta = matter(fileContent)
   console.log('getBlogPage', meta)
-  const datastr = __getDataFromName(`${slug}.md`)
   return {
-    datastr,
+    datastr: __getDataFromName(uri),
     meta: meta.data,
     content: meta.content
   }
 }
 
-const __getDataFromName = (name) => {  
-  const lastSLashNum = name.lastIndexOf('/')
-  if ( lastSLashNum !== -1 ){
-   name = name.substr(lastSLashNum+1)
-  }
-  const part = name.replace('.md','').split('-')
+const __getDataFromName = (name) => {
+  const part = path.basename(name).replace('.md','').split('-')
   return `${part[2]}.${part[1]}.${part[0]} ${part[3]}:${part[4]}`
 }
 
@@ -157,16 +152,14 @@ export async function getCatalogPage(props) {
   const fileContent = fs.readFileSync(uri).toString();
   // console.log(fileContent)
   const meta = matter(fileContent)
-  console.log(meta)
-  const baseUrl = path.join(lang,slug)
-  // console.log(meta.data.tags)
-  const pageTags = __tagsToLinks(baseUrl, parseTags(meta.data.tags))
-  // console.log(pageTags)
-  console.log('getCatlogPage', meta.content)
+  // console.log(meta)
+  const baseUrl = path.dirname(path.join(lang,slug))
+  console.log(baseUrl)
+  // console.log('getCatlogPage', meta.content)
   return {
     meta: meta.data,
     content: meta.content,
-    pageTags
+    pageTags: __tagsToLinks(baseUrl, parseTags(meta.data.tags))
   }
 }
 

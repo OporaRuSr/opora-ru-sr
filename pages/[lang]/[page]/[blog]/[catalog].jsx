@@ -28,9 +28,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    console.log('[catalog].jsx params:', params)
+    // console.log('[catalog].jsx params:', params)
     const { lang, page, blog:pageType, catalog:catalogPage } = params
-    console.log(lang, page, pageType, catalogPage)
+    // console.log(lang, page, pageType, catalogPage)
     if (pageType === 'tags') {
         return {
             props: {
