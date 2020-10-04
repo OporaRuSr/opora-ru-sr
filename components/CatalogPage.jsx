@@ -3,45 +3,48 @@ import Layout from './Layout'
 import ReactMarkdown from 'react-markdown'
 import Link from 'next/link'
 
-const TagList = ({tags}) => {
+const TagLinks = ({tags}) => {
     return (
-      <ul className="w-full lg:w-1/4">
-        <div className="w-full flex flex-wrap lg:flex-col text-lg mb-5">
+        <div>
         {
           tags.map(function(tag, id) {
             return (
-              <div key={id} className="ml-5">
-                <li>
-                    <Link href={tag.link}><a>#{tag.name+' '}</a></Link>
-                </li>
-              </div>
+              <Link key={id} href={tag.link}><a>#{tag.name+' '}</a></Link>
             )
           })
         }
         </div>
-      </ul>
     )
 }
 
 export default function CatalogPage(props) {
     const {lang, payload} = props
     return (
-        <Layout lang={lang} title={payload.meta.title}>
-          <div className="oporaPageHead">
-            <h1>{payload.meta.title}</h1>
+      <Layout lang={lang} title={payload.meta.title}>
+      <div className="oporaPageHead w-full px-3">
+         <h1>{payload.meta.title}</h1>
+      </div>
+      <div className="oporaPageHead">
+        <TagLinks tags={payload.pageTags}/>
+      </div>
+      <div className="oporaWhiteBlock lg:mx-5">
+        <div className="">
+          <div className="flex flex-col lg:flex-row">
+           <div className="oporaDate">
+            <p>{payload.datastr}</p>  
+           </div>
+           <div className="w-full lg:flex-none lg:mx-6 lg:mb-6 lg:w-1/2">
+             <img className="w-full" src={payload.meta.newsimage} />
+           </div>
+           <div className="text-base my-6 mr-6 lg:mt-0">
+              {payload.meta.description}
+           </div>
           </div>
-          <div className="oporaImage">
-            <img src={payload.meta.newsimage} />
+          <div className="">
+              <ReactMarkdown source={payload.content} />
           </div>
-          <div className="oporaText">
-            <ReactMarkdown source={payload.content} />
-          </div>
-          <div className="oporaDescription">
-            {payload.meta.description}
-          </div>
-          <div className="oporaTagListPage">
-            <TagList tags={payload.pageTags}/>
-          </div>
-        </Layout>
+        </div>
+      </div>
+    </Layout>
     )
 }
