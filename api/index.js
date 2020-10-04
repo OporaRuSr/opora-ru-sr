@@ -154,7 +154,7 @@ export async function getCatalogPage(props) {
   const meta = matter(fileContent)
   // console.log(meta)
   const baseUrl = path.dirname(path.join(lang,slug))
-  console.log(baseUrl)
+  // console.log(baseUrl)
   // console.log('getCatlogPage', meta.content)
   return {
     meta: meta.data,
