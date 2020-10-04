@@ -68,13 +68,19 @@ export async function getBlogPage({lang,slug}) {
   const fileContent = fs.readFileSync(uri).toString();
   const meta = matter(fileContent)
   console.log('getBlogPage', meta)
+  const datastr = __getDataFromName(`${slug}.md`)
   return {
+    datastr,
     meta: meta.data,
     content: meta.content
   }
 }
 
-const __getDataFromName = (name) => {
+const __getDataFromName = (name) => {  
+  const lastSLashNum = name.lastIndexOf('/')
+  if ( lastSLashNum !== -1 ){
+   name = name.substr(lastSLashNum+1)
+  }
   const part = name.replace('.md','').split('-')
   return `${part[2]}.${part[1]}.${part[0]} ${part[3]}:${part[4]}`
 }
@@ -128,7 +134,7 @@ export async function getPage(props) {
   }
 }
 
-const __parseTags = (tags) => {
+export function parseTags (tags) {
   const tagList = tags.split(',').map( item => {
     return item.trim()
   })
@@ -138,10 +144,30 @@ const __parseTags = (tags) => {
 const __tagsToLinks = (baseurl, tags) => {
   return tags.map( tag => {
     return {
-      name: tag,
-      link: path.join('/', baseurl, 'tags', tag)
+      name: tag.trim(),
+      link: path.join('/', baseurl, 'tags', tag.trim())
     }
   })
+}
+
+export async function getCatalogPage(props) {
+  console.log('getCatalogPage')
+  const {lang, slug} = props
+  const uri = `${CONTENT_DIR}/${lang}/${slug}.md`
+  const fileContent = fs.readFileSync(uri).toString();
+  // console.log(fileContent)
+  const meta = matter(fileContent)
+  console.log(meta)
+  const baseUrl = path.join(lang,slug)
+  // console.log(meta.data.tags)
+  const pageTags = __tagsToLinks(baseUrl, parseTags(meta.data.tags))
+  // console.log(pageTags)
+  console.log('getCatlogPage', meta.content)
+  return {
+    meta: meta.data,
+    content: meta.content,
+    pageTags
+  }
 }
 
 export async function getCatalog(props) {
@@ -159,7 +185,7 @@ export async function getCatalog(props) {
     const fileContent = fs.readFileSync(`${uri}/${item}`).toString();
     const meta = matter(fileContent)
     const pageUri = path.join('/', lang, slug, 'page', item).replace('.md','')
-    const tagList = __parseTags(meta.data.tags)
+    const tagList = parseTags(meta.data.tags)
 
     links.push({
       title: meta.data.title,
@@ -176,7 +202,7 @@ export async function getCatalog(props) {
   })
 
   const title = PAGE_HEADERS[slug][lang]
-  const baseUrl = path.join(lang,slug)
+  const baseUrl = path.join(lang,slug)    
   return {
     title,
     links,
@@ -194,7 +220,9 @@ export async function getPayload({type, lang, slug}) {
       return getBlogPage({lang, slug})
     case PAGE_TYPE.CATALOG:
       return getCatalog({lang, slug})
-    default:
+    case PAGE_TYPE.CATALOG_PAGE:
+        return getCatalogPage({lang, slug})  
+      default:
       return {}
   }
 }

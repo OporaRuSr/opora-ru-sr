@@ -1,5 +1,5 @@
 import {PAGE_TYPE} from '../../../../api/constants'
-import { getAllCatalogPageLinks, getBlogPage } from '../../../../api'
+import { getAllCatalogPageLinks, getCatalogPage } from '../../../../api'
 
 import CatalogPage from '../../../../components/CatalogPage'
 import CatalogTags from '../../../../components/CatalogTags'
@@ -40,8 +40,8 @@ export async function getStaticProps({ params }) {
     }
     
     const slug = `${page}/${catalogPage}`
-    const payload = await getBlogPage({lang, slug})
-    console.log(payload)
+    const payload = await getCatalogPage({lang, slug})
+    // console.log(payload)
     return {
         props: {
             pageType,

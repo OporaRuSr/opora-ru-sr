@@ -13,7 +13,7 @@ export default function BlogPage({lang, payload}) {
         <div className="">
           <div className="flex flex-col lg:flex-row">
            <div className="oporaDate">
-            <p >08.09.2020</p>  
+            <p>{payload.datastr}</p>  
            </div>
            <div className="w-full lg:flex-none lg:mx-6 lg:mb-6 lg:w-1/2">
              <img className="w-full" src={payload.meta.newsimage} />
