@@ -1,5 +1,5 @@
 import {PAGE_TYPE} from '../../../../api/constants'
-import { getAllCatalogPageLinks, getCatalogPage } from '../../../../api'
+import { getAllCatalogPageLinks, getAllCatalogTagLinks, getCatalogPage } from '../../../../api'
 
 import CatalogPage from '../../../../components/CatalogPage'
 import CatalogTags from '../../../../components/CatalogTags'
@@ -18,20 +18,25 @@ export default function page({pageType, lang, payload}) {
 }
 
 export async function getStaticPaths() {
-    // console.log('[catalog].jsx getStaticPaths')
+    console.log('[catalog].jsx getStaticPaths')
     const catalogList = await getAllCatalogPageLinks()
+    const tagList = await getAllCatalogTagLinks()
+    // console.log(tagList)
     // console.log(catalogList)
+    const paths = catalogList.concat(tagList)
+    console.log(paths)
     return {
-      paths: catalogList,
+      paths,
       fallback: false
     }
 }
 
 export async function getStaticProps({ params }) {
-    // console.log('[catalog].jsx params:', params)
+    console.log('[catalog].jsx params:', params)
     const { lang, page, blog:pageType, catalog:catalogPage } = params
     // console.log(lang, page, pageType, catalogPage)
     if (pageType === 'tags') {
+        console.log('TAGS!!!!')
         return {
             props: {
 

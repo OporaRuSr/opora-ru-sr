@@ -29,6 +29,40 @@ export async function getPageLinks(selectType=null) {
   return ret
 }
 
+export async function getAllCatalogTagLinks() {
+  const result = []
+  const rawTags = {}
+  const links = await getPageLinks(PAGE_TYPE.CATALOG)
+  links.forEach(catalogDir => {
+    const uri = path.join(CONTENT_DIR, catalogDir)
+    const dir = fs.readdirSync(uri)
+    dir.forEach( fileName => {
+      if (fileName.endsWith('.md')) {
+        const uri = path.join(CONTENT_DIR, catalogDir, fileName)
+        // console.log('getAllCatalogTagLinks ', uri)
+        const fileContent = fs.readFileSync(uri).toString()
+        const meta = matter(fileContent)
+        // console.log(catalogDir)
+        if (!rawTags[catalogDir]) {
+          rawTags[catalogDir] = {}
+        }
+        const tags = parseTags(meta.data.tags)
+        tags.forEach( item => rawTags[catalogDir][item] = '')
+        }
+      })
+    })
+  // console.log(Object.keys(rawTags))
+    Object.keys(rawTags).forEach(catalogDir => {
+    const items = rawTags[catalogDir]
+    console.log(catalogDir)
+    Object.keys(items).forEach(item => {
+      result.push( __tagToLink(catalogDir, item).link) // only link return
+    })
+  })
+  // console.log(result)
+  return result
+}
+
 export async function getAllCatalogPageLinks () {
   const result = []
   const links = await getPageLinks(PAGE_TYPE.CATALOG)
@@ -136,13 +170,15 @@ export function parseTags (tags) {
   return tagList
 }
 
+const __tagToLink = (baseurl, tag) => {
+  return {
+    name: tag.trim(),
+    link: encodeURI(path.join('/', baseurl, 'tags', tag.trim()))
+  }
+}
+
 const __tagsToLinks = (baseurl, tags) => {
-  return tags.map( tag => {
-    return {
-      name: tag.trim(),
-      link: path.join('/', baseurl, 'tags', tag.trim())
-    }
-  })
+  return tags.map( tag => __tagToLink(baseurl, tag) )
 }
 
 export async function getCatalogPage(props) {
