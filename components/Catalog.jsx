@@ -56,8 +56,6 @@ export default function Catalog(props) {
         </ul>
       </div>
       </div>
-
-      
     </Layout>
   )
 }
