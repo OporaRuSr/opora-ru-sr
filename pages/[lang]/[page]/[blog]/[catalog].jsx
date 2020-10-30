@@ -39,10 +39,7 @@ export async function getStaticProps({ params }) {
     // console.log(lang, page, pageType, catalogPage)
     if (pageType === 'tags') {
         console.log('TAGS!!!!')
-        const payload = await getTagPage({lang, slug, tag:catalogPage})
-        // const payload = {
-        //     title: catalogPage
-        // }
+        const payload = await getTagPage({lang, section:page, tag:catalogPage})
         return {
             props: {
                 pageType,
