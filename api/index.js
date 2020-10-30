@@ -182,14 +182,24 @@ const __tagsToLinks = (baseurl, tags) => {
   return tags.map( tag => __tagToLink(baseurl, tag) )
 }
 
+const __pagesToLikns = (baseurl, pages) => {
+  return pages.map( page =>  {
+    const name = path.basename(page.uri).replace('.md','')
+    return Object.assign({}, page, {
+      uri: path.join('/', baseurl, 'page', name)
+    })
+  })
+}
+
 export async function getTagPage(props) {
-  console.log('getTagPage', props)
+  // console.log('getTagPage', props)
   const {lang, section, tag} = props
-  const sectionTags = getSectionTags({lang, section})
+  const sectionData = getSectionTags({lang, section, tag})
   const baseUrl = path.join(lang,section)
   return {
     title: '#'+tag,
-    pageTags:  __tagsToLinks(baseUrl, sectionTags)
+    pageTags:  __tagsToLinks(baseUrl, sectionData.tags),
+    pageList:  __pagesToLikns(baseUrl, sectionData.pages)
   }
 }
 

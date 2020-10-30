@@ -2,13 +2,13 @@ import matter from 'gray-matter'
 // import marked from 'marked'
 // import React from 'react'
 import fs from 'fs'
-import { assert } from 'console'
+import assert from 'assert'
 import path from 'path'
 
 const CONTENT_DIR = path.join(process.cwd(), 'content')
 
 import {PAGE_TYPE, PAGE_HEADERS, PAGES_TYPES, LANG_LIST} from './constants'
-import page from '../pages/[lang]/[page]/[blog]/[catalog]'
+// import page from '../pages/[lang]/[page]/[blog]/[catalog]'
 
 /////////////////  sting utis section 
 
@@ -27,6 +27,22 @@ const __addTags = (arrTags, strTags) => {
     arrTags[item]=''
   })
   return arrTags
+}
+
+////////////////// some logic utils 
+
+const __addPageInfo = (arr, uri, data, filter = undefined) => {
+  const item = Object.assign({},
+    { 
+      uri
+    }, data)
+  console.log('__addPageInfo', filter)
+  if (!filter) {
+    arr.push(item)
+  } else if ( data.tags.includes(filter)) {
+    arr.push(item)
+  }
+  return arr
 }
 
 /////////////////     file and uri section 
@@ -54,17 +70,21 @@ const __getCatalogPaths = ({lang, section}) => {
 
 ////////////////// external API ////////////////////
 
-const getSectionTags = ({lang, section}) => {
+const getSectionTags = ({lang, section, tag = ''}) => {
   let __tags = []
+  let __pages = []
   const dir = __getCatalogPaths({lang, section})
   dir.map( item => {
     console.log(item)
     const fileContent = fs.readFileSync(item).toString();
     const meta = matter(fileContent)
     __tags = __addTags(__tags, meta.data.tags)
+    __pages = __addPageInfo(__pages, item, meta.data, tag)
   })
-  const ret = Object.keys(__tags)
-  return ret
+  return {
+    tags: Object.keys(__tags),
+    pages: __pages
+  }
 }
 
 module.exports = {
