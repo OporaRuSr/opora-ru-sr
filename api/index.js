@@ -181,6 +181,15 @@ const __tagsToLinks = (baseurl, tags) => {
   return tags.map( tag => __tagToLink(baseurl, tag) )
 }
 
+export async function getTagPage(props) {
+  const {lang, slug, tag} = props
+  const baseUrl = path.dirname(path.join(lang,slug))
+  return {
+    title: '#'+tag,
+    pageTags: __tagsToLinks(baseUrl, parseTags(meta.data.tags))
+  }
+}
+
 export async function getCatalogPage(props) {
   console.log('getCatalogPage')
   const {lang, slug} = props

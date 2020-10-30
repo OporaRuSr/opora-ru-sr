@@ -1,21 +1,7 @@
 import React from 'react'
 import Layout from './Layout'
 import ReactMarkdown from 'react-markdown'
-import Link from 'next/link'
-
-const TagLinks = ({tags}) => {
-    return (
-        <div>
-        {
-          tags.map(function(tag, id) {
-            return (
-              <Link key={id} href={tag.link}><a>#{tag.name+' '}</a></Link>
-            )
-          })
-        }
-        </div>
-    )
-}
+import TagLinks from './TagLinks'
 
 export default function CatalogPage(props) {
     const {lang, payload} = props
