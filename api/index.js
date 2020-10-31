@@ -8,7 +8,7 @@ import path from 'path'
 const CONTENT_DIR = path.join(process.cwd(), 'content')
 
 import {PAGE_TYPE, PAGE_HEADERS, PAGES_TYPES, LANG_LIST} from './constants'
-import {getSectionTags} from './api-v2'
+import {getSectionData} from './api-v2'
 
 export function getPageType(name) {
   return PAGES_TYPES[name].type
@@ -191,10 +191,10 @@ const __pagesToLikns = (baseurl, pages) => {
   })
 }
 
-export async function getTagPage(props) {
-  // console.log('getTagPage', props)
-  const {lang, section, tag} = props
-  const sectionData = getSectionTags({lang, section, tag})
+export async function getTagPage({lang, section, tag}) {
+  // // console.log('getTagPage', props)
+  // const {lang, section, tag} = props
+  const sectionData = getSectionData({lang, section, tag})
   const baseUrl = path.join(lang,section)
   return {
     title: '#'+tag,

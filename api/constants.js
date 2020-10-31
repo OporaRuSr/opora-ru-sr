@@ -10,25 +10,32 @@ export const PAGE_TYPE = {
   BLOG_PAGE: 'blog_page',
   PAGE: 'page',
   CATALOG: 'catalog',
-  CATALOG_PAGE: 'catalog_page'
+  CATALOG_PAGE: 'catalog_page',
+  TAG_PAGE: 'tag_page'
 }
 
-export const PAGES_TYPES = {
-  'index': {
+//OBSOLETE
+export const PAGES_TYPES = {}
+
+export const SECTIONS_TYPE_LIST = {
+  'pages': {
     type: PAGE_TYPE.PAGE
   },
-  'news': {
-    type: PAGE_TYPE.BLOG
-  },
-  'catalog': {
-    type: PAGE_TYPE.CATALOG
-  },
-  'cases': {
-    type: PAGE_TYPE.BLOG
-  },
-  'about': {
-    type: PAGE_TYPE.PAGE
-  },
+  // 'index': {
+  //   type: PAGE_TYPE.PAGE
+  // },
+  // 'news': {
+  //   type: PAGE_TYPE.BLOG
+  // },
+  // 'catalog': {
+  //   type: PAGE_TYPE.CATALOG
+  // },
+  // 'cases': {
+  //   type: PAGE_TYPE.BLOG
+  // },
+  // 'about': {
+  //   type: PAGE_TYPE.PAGE
+  // },
 }
 
 export const PAGE_HEADERS = {

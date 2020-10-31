@@ -1,24 +1,26 @@
-import {PAGE_TYPE} from '../../../../api/constants'
+// import {PAGE_TYPE} from '../../../../api/constants'
 import { getAllCatalogPageLinks, getAllCatalogTagLinks, getCatalogPage, getTagPage } from '../../../../api'
-
-import CatalogPage from '../../../../components/CatalogPage'
-import CatalogTags from '../../../../components/CatalogTags'
+import {MainPage} from '../../../../views'
+// import CatalogPage from '../../../../components/CatalogPage'
+// import CatalogTags from '../../../../components/CatalogTags'
 
 export default function page({pageType, lang, payload}) {
-    const props = {lang, payload}
+    console.log('[catalog].jsx props ', pageType, lang)
+    // const props = {lang, payload}
+    return MainPage({lang, payload, pageType})
     // console.log('[catalog].jsx props ', props)
-    switch (pageType) {
-        case 'page': return (
-          <CatalogPage {...props}/>
-        )
-        case 'tags': return (
-          <CatalogTags {...props}/>
-        )
-    }
+    // switch (pageType) {
+        // case 'page': return (
+        //   <CatalogPage {...props}/>
+        // )
+        // case 'tags': return (
+        //   <CatalogTags {...props}/>
+        // )
+    // }
 }
 
 export async function getStaticPaths() {
-    console.log('[catalog].jsx getStaticPaths')
+    // console.log('[catalog].jsx getStaticPaths')
     const catalogList = await getAllCatalogPageLinks()
     const tagList = await getAllCatalogTagLinks()
     // console.log(tagList)
@@ -32,15 +34,15 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    console.log('[catalog].jsx params:', params)
+    // console.log('[catalog].jsx params:', params)
     const { lang, page, blog:pageType, catalog:catalogPage } = params
     const slug = `${page}/${catalogPage}`
 
     // console.log(lang, page, pageType, catalogPage)
     if (pageType === 'tags') {
-        console.log('TAGS!!!!')
+        // console.log('TAGS!!!!')
         const payload = await getTagPage({lang, section:page, tag:catalogPage})
-        console.log('payload:', payload)
+        // console.log('payload:', payload)
         return {
             props: {
                 pageType,

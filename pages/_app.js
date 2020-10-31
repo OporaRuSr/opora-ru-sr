@@ -1,10 +1,12 @@
 import '../styles/global.css'
 import React from 'react'
 
-export default function App({ Component, pageProps }) {
+const App = ({ Component, pageProps }) => {
   return (
     <Component {...pageProps} >
     {pageProps}
     </Component>
   )
 }
+
+export default App

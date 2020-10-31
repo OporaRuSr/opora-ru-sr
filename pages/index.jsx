@@ -1,8 +1,12 @@
 import React, {useEffect} from 'react'
-import Page from '../components/Page'
-import { getPage } from '../api'
+// import Page from '../components/Page'
+// import { getPage } from '../api'
+import {getPayload} from '../api/loader-v2'
+import {MainPage} from '../views'
 
-export default function Index({payload}) {
+// import {PAGE_TYPE} from '../api/constants'
+
+export default function Index(props) {
   useEffect(()=>{
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", user => {
@@ -15,16 +19,14 @@ export default function Index({payload}) {
     }
   },[])
   return (
-    <Page lang={'ru'} payload={payload}/>
+    <MainPage {...props}/>
   )
 }
 
-export async function getStaticProps({ params }) {
-  const lang = 'ru'
-  const payload = await getPage({lang, slug:'index'})
-  return {
-    props: {
-      lang, payload
-    }
-  }
+export async function getStaticProps() {
+  // const lang = 'ru'
+  // const section = 'pages'
+  // const subsection = ''
+  // const filename = 'index'
+  return getPayload()
 }

@@ -1,14 +1,9 @@
 import matter from 'gray-matter'
-// import marked from 'marked'
-// import React from 'react'
 import fs from 'fs'
 import assert from 'assert'
 import path from 'path'
 
 const CONTENT_DIR = path.join(process.cwd(), 'content')
-
-import {PAGE_TYPE, PAGE_HEADERS, PAGES_TYPES, LANG_LIST} from './constants'
-// import page from '../pages/[lang]/[page]/[blog]/[catalog]'
 
 /////////////////  sting utis section 
 
@@ -19,8 +14,7 @@ const __splitTags = (tags) => {
   return tagList
 }
 
-
-//  add strTags to arrTags
+//  arrTags[] <- strTags
 const __addTags = (arrTags, strTags) => {
   const tags = __splitTags(strTags)
   tags.forEach( item => {
@@ -36,7 +30,7 @@ const __addPageInfo = (arr, uri, data, filter = undefined) => {
     { 
       uri
     }, data)
-  console.log('__addPageInfo', filter)
+  // console.log('__addPageInfo', filter)
   if (!filter) {
     arr.push(item)
   } else if ( data.tags.includes(filter)) {
@@ -46,10 +40,10 @@ const __addPageInfo = (arr, uri, data, filter = undefined) => {
 }
 
 /////////////////     file and uri section 
-const __getUri = ({lang, section}) => {
+const __getUri = ({lang, section, name=''}) => {
   assert(lang, 'lang must be set')
   assert(section, 'section must be set')
-  const uri = path.join(CONTENT_DIR, lang, section)
+  const uri = path.join(CONTENT_DIR, lang, section, name)
   return uri
 }
 
@@ -70,7 +64,18 @@ const __getCatalogPaths = ({lang, section}) => {
 
 ////////////////// external API ////////////////////
 
-const getSectionTags = ({lang, section, tag = ''}) => {
+const getPageData = ({lang, section, name}) => {
+  const uri = __getUri({lang, section, name})+'.md'
+  const fileContent = fs.readFileSync(uri).toString();
+  const meta = matter(fileContent)
+  console.log(uri)
+  return {
+  }
+}
+
+const getSectionData = ({lang, section, tag = ''}) => {
+  assert(lang, 'lang must be set')
+  assert(section, 'section must be set')
   let __tags = []
   let __pages = []
   const dir = __getCatalogPaths({lang, section})
@@ -88,5 +93,6 @@ const getSectionTags = ({lang, section, tag = ''}) => {
 }
 
 module.exports = {
-  getSectionTags
+  getSectionData,
+  getPageData
 }
