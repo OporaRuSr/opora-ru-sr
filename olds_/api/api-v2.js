@@ -15,7 +15,7 @@ const __splitTags = (tags) => {
 }
 
 //  arrTags[] <- strTags
-const __addTags = (arrTags, strTags) => {
+const __addTags = (arrTags, strTags = '') => {
   const tags = __splitTags(strTags)
   tags.forEach( item => {
     arrTags[item]=''
@@ -25,10 +25,11 @@ const __addTags = (arrTags, strTags) => {
 
 ////////////////// some logic utils 
 
-const __addPageInfo = (arr, uri, data, filter = undefined) => {
+const __addPageInfo = (arr, url, data, filter = undefined) => {
   const item = Object.assign({},
     { 
-      uri
+      url,
+      datastr: __getDataFromName(url)
     }, data)
   // console.log('__addPageInfo', filter)
   if (!filter) {
@@ -39,7 +40,23 @@ const __addPageInfo = (arr, uri, data, filter = undefined) => {
   return arr
 }
 
-/////////////////     file and uri section 
+const __getDataFromName = (name) => {
+  const part = path.basename(name).replace('.md','').split('-')
+  return `${part[2]}.${part[1]}.${part[0]} ${part[3]}:${part[4]}`
+}
+
+const __getBaseName = (filePath) => {
+  return path.basename(filePath).replace('.md','')
+}
+
+///////////////// file and uri section
+const __getUrl = ({lang, section, name=''}) => {
+  assert(lang, 'lang must be set')
+  assert(section, 'section must be set')
+  const uri = path.join('/', lang, section, name)
+  return uri
+}
+
 const __getUri = ({lang, section, name=''}) => {
   assert(lang, 'lang must be set')
   assert(section, 'section must be set')
@@ -68,8 +85,11 @@ const getPageData = ({lang, section, name}) => {
   const uri = __getUri({lang, section, name})+'.md'
   const fileContent = fs.readFileSync(uri).toString();
   const meta = matter(fileContent)
-  console.log(uri)
+  console.log('getPageData from', uri)
+  // console.log(meta)
   return {
+    meta: meta.data,
+    content: meta.content
   }
 }
 
@@ -81,10 +101,12 @@ const getSectionData = ({lang, section, tag = ''}) => {
   const dir = __getCatalogPaths({lang, section})
   dir.map( item => {
     console.log(item)
+    const name = __getBaseName(item)
+    const url = __getUrl({lang, section, name})
     const fileContent = fs.readFileSync(item).toString();
     const meta = matter(fileContent)
     __tags = __addTags(__tags, meta.data.tags)
-    __pages = __addPageInfo(__pages, item, meta.data, tag)
+    __pages = __addPageInfo(__pages, url, meta.data, tag)
   })
   return {
     tags: Object.keys(__tags),

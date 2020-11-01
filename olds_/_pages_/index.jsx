@@ -24,9 +24,5 @@ export default function Index(props) {
 }
 
 export async function getStaticProps() {
-  // const lang = 'ru'
-  // const section = 'pages'
-  // const subsection = ''
-  // const filename = 'index'
   return getPayload()
 }

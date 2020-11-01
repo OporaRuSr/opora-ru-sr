@@ -15,27 +15,24 @@ export const PAGE_TYPE = {
 }
 
 //OBSOLETE
-export const PAGES_TYPES = {}
+// export const PAGES_TYPES = {}
 
 export const SECTIONS_TYPE_LIST = {
-  'pages': {
+  'news': {
+    type: PAGE_TYPE.BLOG
+  },
+  'catalog': {
+    type: PAGE_TYPE.CATALOG
+  },
+  'cases': {
+    type: PAGE_TYPE.BLOG
+  },
+  'about': {
     type: PAGE_TYPE.PAGE
   },
-  // 'index': {
-  //   type: PAGE_TYPE.PAGE
-  // },
-  // 'news': {
-  //   type: PAGE_TYPE.BLOG
-  // },
-  // 'catalog': {
-  //   type: PAGE_TYPE.CATALOG
-  // },
-  // 'cases': {
-  //   type: PAGE_TYPE.BLOG
-  // },
-  // 'about': {
-  //   type: PAGE_TYPE.PAGE
-  // },
+  'index': {
+    type: PAGE_TYPE.PAGE
+  }
 }
 
 export const PAGE_HEADERS = {

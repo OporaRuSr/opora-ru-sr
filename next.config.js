@@ -7,8 +7,16 @@
 //   }
 // }
 
+// rewrites() {
+//   return [
+//     {
+//     source: '/:locale/pages',
+//     destination: '/'
+//     }
+//   ]
+// },
+
 module.exports = {
-  // exportPathMap,
   webpack: (cfg, { isServer }) => {
     cfg.module.rules.push(
       {
