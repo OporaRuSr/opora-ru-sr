@@ -18,7 +18,7 @@ const getPageLinks = (sections) => {
   const ret = []
   sections.forEach( item => {
 // RND !!!
-    console.log(item)
+    // console.log(item)
   })
   return ret
 }
