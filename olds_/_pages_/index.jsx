@@ -26,4 +26,3 @@ export default function Index(props) {
 export async function getStaticProps() {
   return getPayload()
 }
-
