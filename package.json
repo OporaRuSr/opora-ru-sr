@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "gray-matter": "^4.0.2",
-    "marked": "^1.2.2",
+    "marked": "^4.0.10",
     "next": "^10.0.0",
     "raw-loader": "^4.0.1",
     "react": "^17.0.1",
